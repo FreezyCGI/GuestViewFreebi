@@ -8,7 +8,7 @@ create table menu_items
 	description varchar,
 	price int,
 	allergens varchar,
-	status varchar
+	status varchar 
 );
 
 create table menu_categories

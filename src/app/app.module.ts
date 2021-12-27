@@ -8,6 +8,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReviewsComponent } from './reviews/reviews.component';
     MenuItemListComponent,
     ShoppingCartComponent,
     NavBarComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

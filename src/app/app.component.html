@@ -1,1 +1,15 @@
-<app-menu></app-menu>
+<div class="mainContainer">
+
+    <app-nav-bar class="navBarTop">Menu</app-nav-bar>
+
+    <div class="shoppingCart" *ngIf="shoppingCartActive">
+        <app-shopping-cart></app-shopping-cart>
+    </div>
+    
+
+    <div class="content"> 
+        <router-outlet></router-outlet>
+    </div>
+    
+    
+</div>

@@ -1,8 +1,8 @@
-<div class="mainContainer">
+<div class="mainContainer" >
 
-    <app-nav-bar class="navBarTop">Menu</app-nav-bar>
+    <app-nav-bar class="navBarTop" (onBtnShoppingCartClickedEvent)="onBtnShoppingCartClickedEvent($event)">Menu</app-nav-bar>
 
-    <div class="shoppingCart" *ngIf="shoppingCartActive">
+    <div class="shoppingCart" *ngIf="shoppingCartActive" (click)="$event.stopPropagation()">
         <app-shopping-cart></app-shopping-cart>
     </div>
     

@@ -10,8 +10,9 @@ export class AppComponent {
   shoppingCartActive:boolean = false;
 
 
-  @HostListener('document:click', ['$event']) onDocumentClick() {
+  @HostListener('document:click', ['$event']) onDocumentClick(event:MouseEvent) {
     this.shoppingCartActive = false;
+    event.stopPropagation();
   }
 
   onBtnShoppingCartClickedEvent(event:MouseEvent)

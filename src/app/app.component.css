@@ -6,12 +6,7 @@
     grid-template-rows: min-content 1fr;
   }
 
-.navBarTop{
-    grid-column-start: 1;
-    grid-column-end: span 2;
-    grid-row: 1;
-    border-style: solid;
-}
+
 
 .content{
     grid-column-start: 1;
@@ -21,9 +16,19 @@
     min-height: 80vh;
 }
 
+
+.navBarTop{
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    grid-row: 1;
+    border-style: solid;
+}
+
+
 .shoppingCart
 {
     grid-column: 2;
     grid-row: 2;
     border-style: solid;
+    z-index:2;
 }

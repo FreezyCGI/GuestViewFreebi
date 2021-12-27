@@ -1,0 +1,14 @@
+.mainContainer {
+    display: grid ;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+.shoppingCartButton{
+    grid-column: 3;
+}
+
+.firstColumn{
+    grid-column: 1;
+
+}

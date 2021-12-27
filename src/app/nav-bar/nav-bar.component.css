@@ -10,6 +10,9 @@
 
 .firstColumn{
     grid-column: 1;
-    
 
+}
+
+a{
+    margin-right: 15px;
 }

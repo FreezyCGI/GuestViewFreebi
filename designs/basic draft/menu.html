@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <style>
+        .mainContainer {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-template-rows: min-content 1fr;
+        }
+
+
+
+        .content {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 2;
+            border-style: solid;
+            min-height: 80vh;
+        }
+
+
+        .navBarTop {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 1;
+            border-style: solid;
+        }
+
+        .mainContainerNav {
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: 5fr 1fr 1fr;
+        }
+
+        .shoppingCartButton {
+            grid-column: 3;
+        }
+
+        .firstColumn {
+            grid-column: 1;
+
+        }
+
+        a {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainContainer">
+        <nav class="navBarTop">
+            <div class="mainContainerNav">
+                <div class="firstColum">
+                    <a href="home.html">Home</a>
+                    <a href="menu.html">Menu</a>
+                    <a href="orders.html">Orders</a>
+                    <a href="call waiter.html">Call Waiter</a>
+                    <a href="reviews.html">Reviews</a>
+                </div>
+                <div class="shoppingCartButton">
+                    <button><a href="shopping cart.html">ShoppingCart</a></button>
+                </div>
+            </div>
+
+        </nav>
+
+        <div class="content">
+            <ul>
+                <div>
+                    <div>Item 1 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <br>
+                </div>
+                <div>
+                    <div>Item 2 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <br>
+                </div>
+                <div>
+                    <div>Item 3 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <br>
+                </div>
+                <div>
+                    <div>Item 4 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <br>
+                </div>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

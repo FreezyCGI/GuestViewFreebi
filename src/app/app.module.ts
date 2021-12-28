@@ -9,6 +9,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { HomeComponent } from './home/home.component';
+import { AllComponent } from './menu/all/all.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomeComponent } from './home/home.component';
     ShoppingCartComponent,
     NavBarComponent,
     ReviewsComponent,
-    HomeComponent
+    HomeComponent,
+    AllComponent
   ],
   imports: [
     BrowserModule,

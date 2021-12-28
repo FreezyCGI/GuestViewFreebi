@@ -103,8 +103,7 @@ app.get("/resetDatabase", (req, res) =>
                         {
 
                             if (menuItemsJson[key].category.hasOwnProperty(keyCategory))
-                            {
-                                console.log(menuItemsJson[key].itemId + " with " + menuItemsJson[key].category[keyCategory]);
+                            {                          
                                 pool.query("insert into menu_itemsXmenu_categories(itemId, categoryId) " +
                                     "values($1, $2)",
                                     [

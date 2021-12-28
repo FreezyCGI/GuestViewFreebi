@@ -10,6 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { HomeComponent } from './home/home.component';
 import { AllComponent } from './menu/all/all.component';
+import { TopSellersComponent } from './menu/top-sellers/top-sellers.component';
+import { WeeklySpecialsComponent } from './menu/weekly-specials/weekly-specials.component';
+import { PizzaComponent } from './menu/pizza/pizza.component';
+import { PastaComponent } from './menu/pasta/pasta.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,12 @@ import { AllComponent } from './menu/all/all.component';
     NavBarComponent,
     ReviewsComponent,
     HomeComponent,
-    AllComponent
+    AllComponent,
+    TopSellersComponent,
+    WeeklySpecialsComponent,
+    PizzaComponent,
+    PastaComponent,
+    MyOrdersComponent
   ],
   imports: [
     BrowserModule,

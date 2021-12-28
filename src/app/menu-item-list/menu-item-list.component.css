@@ -1,0 +1,9 @@
+.navMenu{
+    grid-row: 2;
+    border-style: solid;
+}
+
+.menuItemList{
+    grid-row: 3;
+    border-style: solid;
+}

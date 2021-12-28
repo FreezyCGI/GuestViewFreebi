@@ -1,14 +1,23 @@
-<div *ngFor="let menuItem of menuItemList">
-    <div>Title: {{menuItem.title}}</div>
-    <div>Description: {{menuItem.description}}</div>
-    <div>Price: {{menuItem.price}}</div>
-    <div>allergens: {{menuItem.allergens}}</div>
-    <div>status: {{menuItem.status}}</div>
-    <div>categories: {{menuItem.categories}}</div>
-    <button>Add to ShoppingCart</button>
-    <br>
+<nav class="navMenu">
+    <div>
+        <a>All </a>
+        <a>Top Sellers </a>
+        <a>Weekly Specials </a>
+        <a>Pizza </a>
+        <a>Pasta </a>
+    </div>
+</nav>
 
+<div class="menuItemList">
+    <div  *ngFor="let menuItem of menuItemList">
+        <div>Title: {{menuItem.title}}</div>
+        <div>Description: {{menuItem.description}}</div>
+        <div>Price: {{menuItem.price}}</div>
+        <div>allergens: {{menuItem.allergens}}</div>
+        <div>status: {{menuItem.status}}</div>
+        <div>categories: {{menuItem.categories}}</div>
+        <button>Add to ShoppingCart</button>
+        <br>
 
-
-
+    </div>
 </div>

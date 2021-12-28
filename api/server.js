@@ -28,18 +28,31 @@ app.get("/menuList", (req, res) => {
 
     // set content type (from EX1)
     res.setHeader('Content-Type', 'application/json');
-    pool.query("select ")
-    res.status(200).send("API is running!");
+    pool.query("select * from menu_items").
+    then((data) => {
+        res.status(200).send(data.rows);
+    });
+   
 });
 
-let menuItemsJson = require('../json_Files/menu_Items.json');
+
 app.get("/resetDatabase", (req, res) => {
+
+    let menuItemsJson = require('../json_Files/menu_Items.json');
+    let menuCategoriesJson = require('../json_Files/menu_categories.json');
 
     res.setHeader('Content-Type', 'application/json');
 
     pool.query("delete from menu_itemsXmenu_categories;" +
         "delete from menu_items;" +
         "delete from menu_categories;").then(() => 
+        {
+            uploadMenuItems();
+            uploadMenuCategories();
+            res.status(200).send(menuCategoriesJson);
+        });
+
+        function uploadMenuItems()
         {
             for (var key in menuItemsJson) {             
 
@@ -64,9 +77,27 @@ app.get("/resetDatabase", (req, res) => {
                             allergens
                         ])
                 }
-            }
-            res.status(200).send(menuItemsJson);
-        });
+            } 
+        }
+
+        function uploadMenuCategories()
+        {
+            for (var key in menuCategoriesJson) {             
+
+                if (menuCategoriesJson.hasOwnProperty(key)) {
+
+                    pool.query('insert into menu_categories(categoryId, title, description) ' +
+                        'values($1, $2, $3)',
+                        [
+                            menuCategoriesJson[key].categoryId,
+                            menuCategoriesJson[key].title,
+                            menuCategoriesJson[key].desc
+                        ])
+                }
+            } 
+        }
+        
+
 });
 
 // // the rest of the route handlers are mostly the same as in EX3 with important differences

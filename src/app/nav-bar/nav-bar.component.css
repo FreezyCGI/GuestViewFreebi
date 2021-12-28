@@ -8,6 +8,10 @@
     grid-column: 3;
 }
 
+.callWaiterButton{
+    grid-column: 2;
+}
+
 .firstColumn{
     grid-column: 1;
 

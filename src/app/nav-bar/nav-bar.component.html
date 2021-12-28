@@ -1,12 +1,15 @@
 <div class="mainContainer">
     <div class="firstColumn"> 
         <a routerLink="">Home</a>
-        <a routerLink="/menuItemList">menu</a>
-        <a routerLink="">orders</a>
-        <a routerLink="">call waiter</a>
+        <a routerLink="/menuItemList">Menu</a>
+        <a routerLink="">My Order</a>
         <a routerLink="/reviews">reviews</a>
     </div>
    
+    <div class="callWaiterButton">
+        <input type="button" value="Call Waiter" (click)="onBtnCallWaiterClicked($event)" >
+    </div>
+    
     <div class="shoppingCartButton">
         <input type="button" value="ShoppingCart" (click)="onBtnShoppingCartClicked($event)" >
     </div>

@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <style>
+        .mainContainer {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-template-rows: min-content 1fr;
+        }
+
+
+
+        .content {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 2;
+            border-style: solid;
+            min-height: 80vh;
+        }
+
+
+        .navBarTop {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 1;
+            border-style: solid;
+        }
+
+
+        .shoppingCart {
+            grid-column: 2;
+            grid-row: 2;
+            border-style: solid;
+            z-index: 2;
+        }
+
+        .mainContainerNav {
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: 5fr 1fr 1fr;
+        }
+
+        .shoppingCartButton {
+            grid-column: 3;
+        }
+
+        .firstColumn {
+            grid-column: 1;
+
+        }
+
+        a {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainContainer">
+        <nav class="navBarTop">
+            <div class="mainContainerNav">
+                <div class="firstColum">
+                    <a href="home.html">Home</a>
+                    <a href="menu/all.html">Menu</a>
+                    <a href="orders.html">My Order</a>
+                </div>
+                <div class="callWaiterButton">
+                    <button><a href="call waiter.html">Call Waiter</a></button>
+                </div>
+                <div class="shoppingCartButton">
+                    <button><a href="shopping cart.html">ShoppingCart</a></button>
+                </div>
+            </div>
+
+        </nav>
+        <div class="shoppingCart">
+            <div>Your Order:</div>
+            <ul>
+                <div>1 Spaghetti Carbonara</div>
+                <div>2 PIZZA PROSCIUTTO CRUDO E RUCOLA</div>
+                <br>
+                <div>Anmerkungen: one small PIZZA</div>
+            </ul>
+            <div>Total Price: </div>
+            <br>
+
+            <div>Choose your payment:</div>
+            <ul>
+                call a mock payments service generating a JWT indicating the success or failure of the payment
+            </ul>
+            <br>
+
+            <button>buy</button>
+
+        </div>
+
+        <div class="content">
+            <div>this content should not be influenced by clicking the button shoppingCart</div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <style>
+        .mainContainer {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-template-rows: min-content 1fr;
+        }
+
+
+
+        .content {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 3;
+            border-style: solid;
+            min-height: 80vh;
+        }
+
+
+        .navBarTop {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 1;
+            border-style: solid;
+        }
+
+        .mainContainerNav {
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: 5fr 1fr 1fr;
+        }
+
+        .shoppingCartButton {
+            grid-column: 3;
+        }
+
+        .firstColumn {
+            grid-column: 1;
+
+        }
+
+        a {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainContainer">
+        <nav class="navBarTop">
+            <div class="mainContainerNav">
+                <div class="firstColum">
+                    <a href="../home.html">Home</a>
+                    <a href="../menu.html">Menu</a>
+                    <a href="../orders.html">My Order</a>
+                </div>
+                <div class="callWaiterButton">
+                    <button><a href="../call waiter.html">Call Waiter</a></button>
+                </div>
+                <div class="shoppingCartButton">
+                    <button><a href="../shopping cart.html">ShoppingCart</a></button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <a href="top sellers.html">Top Sellers</a>
+            <ul></ul>
+
+            <a href="weekly specials.html">Weekly Specials</a>
+            <ul></ul>
+
+            <a href="pizza.html">Pizza</a>
+            <ul></ul>
+
+            <a href="../menu.html">Pasta</a>
+            <ul></ul>
+            <div>All pasta is 100% hand-made. This is the reason, why we are opened only at night. All over the day, we
+                prepare fresh pasta!</div>
+            <ul>
+                <div>
+                    <div>Spaghetti Carbonara</div>
+                    <div>Spaghetti with pancetta, pecorino, parmesan and eggs.</div>
+                    <div>Allergenes: "A","B","C","D","E","F","G"</div>
+                    <div>Price: 9.80</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+                <div>
+                    <div>Lasagne al Forno Classico</div>
+                    <div>Classical lasagne with ground meet sauce</div>
+                    <div>Allergenes: "A","B","C","D","E","F"</div>
+                    <div>Price: 7.80</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

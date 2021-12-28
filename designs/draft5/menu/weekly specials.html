@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <style>
+        .mainContainer {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-template-rows: min-content 1fr;
+        }
+
+
+
+        .content {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 3;
+            border-style: solid;
+            min-height: 80vh;
+        }
+
+
+        .navBarTop {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 1;
+            border-style: solid;
+        }
+
+        .mainContainerNav {
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: 5fr 1fr 1fr;
+        }
+
+        .navBarLowerTop {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 2;
+            border-style: solid;
+        }
+
+        .shoppingCartButton {
+            grid-column: 3;
+        }
+
+        .firstColumn {
+            grid-column: 1;
+
+        }
+
+        a {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainContainer">
+        <nav class="navBarTop">
+            <div class="mainContainerNav">
+                <div class="firstColum">
+                    <a href="../home.html">Home</a>
+                    <a href="all.html">Menu</a>
+                    <a href="../orders.html">My Order</a>
+                </div>
+                <div class="callWaiterButton">
+                    <button><a href="../call waiter.html">Call Waiter</a></button>
+                </div>
+                <div class="shoppingCartButton">
+                    <button><a href="../shopping cart.html">ShoppingCart</a></button>
+                </div>
+            </div>
+        </nav>
+        <nav class="navBarLowerTop">
+            <div class="mainContainerLowerNav">
+                <div class="firstColumLowerNav">
+                    <a href="all.html">All</a>
+                    <a href="top sellers.html">Top Sellers</a>
+                    <a href="weekly specials.html">Weekly Specials</a>
+                    <a href="pizza.html">Pizza</a>
+                    <a href="pasta.html">Pasta</a>                
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div>Explore new dishes and promotions every week!</div>
+            <ul>
+                <div>
+                    <div>Pizza Margherita</div>
+                    <div>Everyone knows and loves it – pizza margherita is a universally praised pizza for a reason. Originating in Naples, the margherita pizza has an interesting history supposedly rooted in a visit by Queen Margherita to Naples. The iconic pizza margherita is also known for representing the colours of the Italian flag: red tomato sauce, white mozzarella, and green basil. The combination of these ingredients creates a delicious pizza which has withstood the test of time</div>
+                    <div>Allergenes: "A","B","C"</div>
+                    <div>Price:   6.80</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+                <div>
+                    <div>PIZZA PROSCIUTTO CRUDO E RUCOLA</div>
+                    <div>Though it can obviously be enjoyed at any time of the year the prosciutto crudo e rucola pizza is a summertime favourite thanks to its fresh flavours. Made with prosciutto, rocket and your choice of cheese (some of our favourites include parmesan, mozzarella and fior di latte), pizza prosciutto crudo e rucola is a dinner party favourite for being easy to make and universally loved.</div>
+                    <div>Allergenes: "A","B","C","D","E","F","G","H"</div>
+                    <div>Price:  10.80</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+                <div>
+                    <div>Item 2 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+                <div>
+                    <div>Spaghetti Carbonara</div>
+                    <div>Spaghetti with pancetta, pecorino, parmesan and eggs.</div>
+                    <div>Allergenes: "A","B","C","D","E","F","G"</div>
+                    <div>Price:  9.80</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+                <div>
+                    <div>Item 3 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+                <div>
+                    <div>Item 4 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<html>
+
+<head>
+    <style>
+        .mainContainer {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-template-rows: min-content 1fr;
+        }
+
+
+
+        .content {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 3;
+            border-style: solid;
+            min-height: 80vh;
+        }
+
+
+        .navBarTop {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 1;
+            border-style: solid;
+        }
+
+        .mainContainerNav {
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: 5fr 1fr 1fr;
+        }
+
+        .navBarLowerTop {
+            grid-column-start: 1;
+            grid-column-end: span 2;
+            grid-row: 2;
+            border-style: solid;
+        }
+
+        .shoppingCartButton {
+            grid-column: 3;
+        }
+
+        .firstColumn {
+            grid-column: 1;
+
+        }
+
+        a {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainContainer">
+        <nav class="navBarTop">
+            <div class="mainContainerNav">
+                <div class="firstColum">
+                    <a href="../home.html">Home</a>
+                    <a href="../menu.html">Menu</a>
+                    <a href="../orders.html">My Order</a>
+                </div>
+                <div class="callWaiterButton">
+                    <button><a href="../call waiter.html">Call Waiter</a></button>
+                </div>
+                <div class="shoppingCartButton">
+                    <button><a href="../shopping cart.html">ShoppingCart</a></button>
+                </div>
+            </div>
+        </nav>
+        <nav class="navBarLowerTop">
+            <div class="mainContainerLowerNav">
+                <div class="firstColumLowerNav">
+                    <a href="all.html">All</a>
+                    <a href="top sellers.html">Top Sellers</a>
+                    <a href="weekly specials.html">Weekly Specials</a>
+                    <a href="pizza.html">Pizza</a>
+                    <a href="pasta.html">Pasta</a>                
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div>Traditional italien pizza made with love from our professianal pizza baker Claudio. All pizzas are prepared in a traditional stone oven.</div>
+            <ul>
+                <div>
+                    <div>Item 1 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+                <div>
+                    <div>Item 2 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+                <div>
+                    <div>Item 3 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+                <div>
+                    <div>Item 4 </div>
+                    <div>bla</div>
+                    <div>bla</div>
+                    <div>Status: available</div>
+                    <button>Add to ShoppingCart</button>
+                    <br>
+                </div><br>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

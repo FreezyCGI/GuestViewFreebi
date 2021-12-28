@@ -16,28 +16,44 @@ const checkAuth = require('./check_auth');
 const loginRoutes = require('./login');
 app.use("/login", loginRoutes);
 
-// get products for logged in user as a list of JSON entries
-app.get("/", (req, res) => {
-
-    // set content type (from EX1)
+app.get("/", (req, res) =>
+{
     res.setHeader('Content-Type', 'text/html');
     res.status(200).send("API is running!");
 });
 
-app.get("/menuList", (req, res) => {
-
-    // set content type (from EX1)
+app.get("/menuList", (req, res) =>
+{
     res.setHeader('Content-Type', 'application/json');
     pool.query("select * from menu_items").
-    then((data) => {
-        res.status(200).send(data.rows);
-    });
-   
+        then((data) =>
+        {
+            res.status(200).send(data.rows);
+        });
 });
 
+app.get("/menuCategories", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    pool.query("select * from menu_categories")
+    .then((data) => {
+        res.status(200).send(data.rows);
+    });
+});
 
-app.get("/resetDatabase", (req, res) => {
+app.get("/menuList/:category", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    pool.query("select * from menu_items items, menu_categories cat, menu_itemsXmenu_categories merger " +
+    "where items.itemId = merger.itemId and cat.categoryId = merger.categoryId and cat.categoryId = $1;", 
+    [req.params.category])
+    .then((data) => {
+        res.status(200).send(data.rows);
+    });
+});
 
+app.get("/resetDatabase", (req, res) =>
+{
     let menuItemsJson = require('../json_Files/menu_Items.json');
     let menuCategoriesJson = require('../json_Files/menu_categories.json');
 
@@ -46,77 +62,86 @@ app.get("/resetDatabase", (req, res) => {
     pool.query("delete from menu_itemsXmenu_categories;" +
         "delete from menu_items;" +
         "delete from menu_categories;").then(() => 
-        {        
+        {
             uploadMenuCategories().
-            then(() => uploadMenuItems());
-            
+                then(() => uploadMenuItems());
+
             res.status(200).send(menuItemsJson);
         });
 
-        function uploadMenuItems()
+    function uploadMenuItems()
+    {
+        for (let key in menuItemsJson)
         {
-            for (let key in menuItemsJson) {             
 
-                if (menuItemsJson.hasOwnProperty(key)) {
+            if (menuItemsJson.hasOwnProperty(key))
+            {
 
-                    let allergens = "";
+                let allergens = "";
 
-                    for (let keyAllergen in menuItemsJson[key].allergens){
-                        if (menuItemsJson.hasOwnProperty(keyAllergen)) {
-                            allergens += menuItemsJson[key].allergens[keyAllergen];
-                        }
+                for (let keyAllergen in menuItemsJson[key].allergens)
+                {
+                    if (menuItemsJson.hasOwnProperty(keyAllergen))
+                    {
+                        allergens += menuItemsJson[key].allergens[keyAllergen];
                     }
+                }
 
-                    pool.query('insert into menu_items(itemid, title, description, price, status, allergens) ' +
-                        'values($1, $2, $3, $4, $5, $6)',
-                        [
-                            menuItemsJson[key].itemId,
-                            menuItemsJson[key].title,
-                            menuItemsJson[key].desc,
-                            menuItemsJson[key].price,
-                            menuItemsJson[key].status,
-                            allergens
-                        ]).then(() => {
-                            for (let keyCategory in menuItemsJson[key].category) {             
+                pool.query('insert into menu_items(itemid, title, description, price, status, allergens) ' +
+                    'values($1, $2, $3, $4, $5, $6)',
+                    [
+                        menuItemsJson[key].itemId,
+                        menuItemsJson[key].title,
+                        menuItemsJson[key].desc,
+                        menuItemsJson[key].price,
+                        menuItemsJson[key].status,
+                        allergens
+                    ])
+                    .then(() =>
+                    {
+                        for (let keyCategory in menuItemsJson[key].category)
+                        {
 
-                                if (menuItemsJson[key].category.hasOwnProperty(keyCategory)) {
-                                    console.log(menuItemsJson[key].itemId + " with " + menuItemsJson[key].category[keyCategory]);
-                                    pool.query("insert into menu_itemsXmenu_categories(itemId, categoryId) "+
+                            if (menuItemsJson[key].category.hasOwnProperty(keyCategory))
+                            {
+                                console.log(menuItemsJson[key].itemId + " with " + menuItemsJson[key].category[keyCategory]);
+                                pool.query("insert into menu_itemsXmenu_categories(itemId, categoryId) " +
                                     "values($1, $2)",
                                     [
                                         menuItemsJson[key].itemId,
                                         menuItemsJson[key].category[keyCategory]
                                     ]
-                                    );
-
-                                }
+                                );
                             }
-                        })                
-                }
-            } 
+                        }
+                    })
+            }
         }
+    }
 
-        function uploadMenuCategories()
+    function uploadMenuCategories()
+    {
+        let promise;
+        for (var key in menuCategoriesJson)
         {
-            let promise;
-            for (var key in menuCategoriesJson) {             
 
-                if (menuCategoriesJson.hasOwnProperty(key)) {
+            if (menuCategoriesJson.hasOwnProperty(key))
+            {
 
-                    promise = pool.query('insert into menu_categories(categoryId, title, description) ' +
-                        'values($1, $2, $3)',
-                        [
-                            menuCategoriesJson[key].categoryId,
-                            menuCategoriesJson[key].title,
-                            menuCategoriesJson[key].desc
-                        ])
-                }
-            } 
-            return promise;
+                promise = pool.query('insert into menu_categories(categoryId, title, description) ' +
+                    'values($1, $2, $3)',
+                    [
+                        menuCategoriesJson[key].categoryId,
+                        menuCategoriesJson[key].title,
+                        menuCategoriesJson[key].desc
+                    ])
+            }
         }
-        
-
+        return promise;
+    }
 });
+
+
 
 // // the rest of the route handlers are mostly the same as in EX3 with important differences
 // app.get("/products", checkAuth, (req, res) => {

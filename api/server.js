@@ -11,17 +11,59 @@ const pool = require('./pool.js');
 let bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 
-// const checkAuth = require('./check_auth');
+const checkAuth = require('./check_auth');
 
-// const loginRoutes = require('./login');
-// app.use("/login", loginRoutes);
+const loginRoutes = require('./login');
+app.use("/login", loginRoutes);
 
 // get products for logged in user as a list of JSON entries
 app.get("/", (req, res) => {
     
 	// set content type (from EX1)
 	res.setHeader('Content-Type', 'text/html');
-    res.status(200).send("EX4: This is a database-backed application which uses JWT");
+    res.status(200).send("API is running!");
+});
+
+app.get("/menuList", (req, res) => {
+    
+	// set content type (from EX1)
+	res.setHeader('Content-Type', 'application/json');
+    pool.query("select ")
+    res.status(200).send("API is running!");
+});
+
+let menuItemsJson = require('../json_Files/menu_Items.json');
+app.get("/resetDatabase", (req, res) => {
+    
+	// set content type (from EX1)
+	res.setHeader('Content-Type', 'application/json');
+
+    pool.query("delete from menu_itemsXmenu_categories");
+    pool.query("delete from menu_items");
+    pool.query("delete from menu_categories");
+
+    setTimeout(() => {
+
+        for(var key in menuItemsJson){
+
+            if(menuItemsJson.hasOwnProperty(key))
+            {
+                pool.query('insert into menu_items(itemid, title, description, price, status) ' +
+                    'values($1, $2, $3, $4, $5)',
+                    [
+                        menuItemsJson[key].itemId,
+                        menuItemsJson[key].title,
+                        menuItemsJson[key].desc,
+                        menuItemsJson[key].price,
+                        menuItemsJson[key].status
+                    ])
+            }
+        }
+
+        res.status(200).send(menuItemsJson);
+
+    }, 1000);
+ 
 });
 
 // // the rest of the route handlers are mostly the same as in EX3 with important differences

@@ -46,21 +46,22 @@ app.get("/resetDatabase", (req, res) => {
     pool.query("delete from menu_itemsXmenu_categories;" +
         "delete from menu_items;" +
         "delete from menu_categories;").then(() => 
-        {
-            uploadMenuItems();
-            uploadMenuCategories();
-            res.status(200).send(menuCategoriesJson);
+        {        
+            uploadMenuCategories().
+            then(() => uploadMenuItems());
+            
+            res.status(200).send(menuItemsJson);
         });
 
         function uploadMenuItems()
         {
-            for (var key in menuItemsJson) {             
+            for (let key in menuItemsJson) {             
 
                 if (menuItemsJson.hasOwnProperty(key)) {
 
                     let allergens = "";
 
-                    for (var keyAllergen in menuItemsJson[key].allergens){
+                    for (let keyAllergen in menuItemsJson[key].allergens){
                         if (menuItemsJson.hasOwnProperty(keyAllergen)) {
                             allergens += menuItemsJson[key].allergens[keyAllergen];
                         }
@@ -75,18 +76,34 @@ app.get("/resetDatabase", (req, res) => {
                             menuItemsJson[key].price,
                             menuItemsJson[key].status,
                             allergens
-                        ])
+                        ]).then(() => {
+                            for (let keyCategory in menuItemsJson[key].category) {             
+
+                                if (menuItemsJson[key].category.hasOwnProperty(keyCategory)) {
+                                    console.log(menuItemsJson[key].itemId + " with " + menuItemsJson[key].category[keyCategory]);
+                                    pool.query("insert into menu_itemsXmenu_categories(itemId, categoryId) "+
+                                    "values($1, $2)",
+                                    [
+                                        menuItemsJson[key].itemId,
+                                        menuItemsJson[key].category[keyCategory]
+                                    ]
+                                    );
+
+                                }
+                            }
+                        })                
                 }
             } 
         }
 
         function uploadMenuCategories()
         {
+            let promise;
             for (var key in menuCategoriesJson) {             
 
                 if (menuCategoriesJson.hasOwnProperty(key)) {
 
-                    pool.query('insert into menu_categories(categoryId, title, description) ' +
+                    promise = pool.query('insert into menu_categories(categoryId, title, description) ' +
                         'values($1, $2, $3)',
                         [
                             menuCategoriesJson[key].categoryId,
@@ -95,6 +112,7 @@ app.get("/resetDatabase", (req, res) => {
                         ])
                 }
             } 
+            return promise;
         }
         
 

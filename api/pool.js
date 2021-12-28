@@ -5,7 +5,7 @@ let pool = new Pool(
         user: "postgres",
         host: "localhost",
         database: "GuestViewFreebi",
-        password:"1234",
+        password:"admin",
         port:"5432"
 });
 

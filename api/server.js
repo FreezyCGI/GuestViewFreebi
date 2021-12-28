@@ -18,52 +18,55 @@ app.use("/login", loginRoutes);
 
 // get products for logged in user as a list of JSON entries
 app.get("/", (req, res) => {
-    
-	// set content type (from EX1)
-	res.setHeader('Content-Type', 'text/html');
+
+    // set content type (from EX1)
+    res.setHeader('Content-Type', 'text/html');
     res.status(200).send("API is running!");
 });
 
 app.get("/menuList", (req, res) => {
-    
-	// set content type (from EX1)
-	res.setHeader('Content-Type', 'application/json');
+
+    // set content type (from EX1)
+    res.setHeader('Content-Type', 'application/json');
     pool.query("select ")
     res.status(200).send("API is running!");
 });
 
 let menuItemsJson = require('../json_Files/menu_Items.json');
 app.get("/resetDatabase", (req, res) => {
-    
-	// set content type (from EX1)
-	res.setHeader('Content-Type', 'application/json');
 
-    pool.query("delete from menu_itemsXmenu_categories");
-    pool.query("delete from menu_items");
-    pool.query("delete from menu_categories");
+    res.setHeader('Content-Type', 'application/json');
 
-    setTimeout(() => {
+    pool.query("delete from menu_itemsXmenu_categories;" +
+        "delete from menu_items;" +
+        "delete from menu_categories;").then(() => 
+        {
+            for (var key in menuItemsJson) {             
 
-        for(var key in menuItemsJson){
+                if (menuItemsJson.hasOwnProperty(key)) {
 
-            if(menuItemsJson.hasOwnProperty(key))
-            {
-                pool.query('insert into menu_items(itemid, title, description, price, status) ' +
-                    'values($1, $2, $3, $4, $5)',
-                    [
-                        menuItemsJson[key].itemId,
-                        menuItemsJson[key].title,
-                        menuItemsJson[key].desc,
-                        menuItemsJson[key].price,
-                        menuItemsJson[key].status
-                    ])
+                    let allergens = "";
+
+                    for (var keyAllergen in menuItemsJson[key].allergens){
+                        if (menuItemsJson.hasOwnProperty(keyAllergen)) {
+                            allergens += menuItemsJson[key].allergens[keyAllergen];
+                        }
+                    }
+
+                    pool.query('insert into menu_items(itemid, title, description, price, status, allergens) ' +
+                        'values($1, $2, $3, $4, $5, $6)',
+                        [
+                            menuItemsJson[key].itemId,
+                            menuItemsJson[key].title,
+                            menuItemsJson[key].desc,
+                            menuItemsJson[key].price,
+                            menuItemsJson[key].status,
+                            allergens
+                        ])
+                }
             }
-        }
-
-        res.status(200).send(menuItemsJson);
-
-    }, 1000);
- 
+            res.status(200).send(menuItemsJson);
+        });
 });
 
 // // the rest of the route handlers are mostly the same as in EX3 with important differences
@@ -106,7 +109,7 @@ app.get("/resetDatabase", (req, res) => {
 // app.get("/session", checkAuth, (req, res) => {
 //      res.status(200).send(req.session)
 // });
-  
+
 let port = 3000;
 app.listen(port);
-console.log("Server running at: http://localhost:"+port);
+console.log("Server running at: http://localhost:" + port);

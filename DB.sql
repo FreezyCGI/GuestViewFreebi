@@ -1,3 +1,5 @@
+-- DB Name: GuestViewFreebi
+
 drop table if exists menu_itemsXmenu_categories;
 drop table if exists menu_items;
 drop table if exists menu_categories;

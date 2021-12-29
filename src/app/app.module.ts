@@ -15,6 +15,8 @@ import { WeeklySpecialsComponent } from './menu/weekly-specials/weekly-specials.
 import { PizzaComponent } from './menu/pizza/pizza.component';
 import { PastaComponent } from './menu/pasta/pasta.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { NavBarMenuComponent } from './menu/nav-bar-menu/nav-bar-menu.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
     WeeklySpecialsComponent,
     PizzaComponent,
     PastaComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    NavBarMenuComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

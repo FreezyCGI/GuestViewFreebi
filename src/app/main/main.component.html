@@ -1,0 +1,17 @@
+<!--Click outside hiding: https://stackoverflow.com/questions/56726410/angular-6-how-can-i-hide-a-div-onclick-of-outside-of-that-div -->
+
+<div class="mainContainer" >
+
+    <app-nav-bar class="navBarTop" (onBtnShoppingCartClickedEvent)="onBtnShoppingCartClickedEvent($event)"></app-nav-bar>
+
+    <div class="shoppingCart" *ngIf="shoppingCartActive" (click)="$event.stopPropagation();">
+        <app-shopping-cart></app-shopping-cart>
+    </div>
+    
+
+    <div class="content"> 
+        <router-outlet></router-outlet>
+    </div>
+    
+    
+</div>

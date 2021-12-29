@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItemModel } from '../models/menu-item-model.model';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor() { }
+  shoppingCartItemList:MenuItemModel[] = []
+
+  constructor(private shoppingCartService:ShoppingCartService) { }
 
   ngOnInit(): void {
+  }
+
+  addToList(item:MenuItemModel):void
+  {
+    this.shoppingCartService.currentValue.subscribe((newItem) => {this.shoppingCartItemList.push(newItem)});
   }
 
 }

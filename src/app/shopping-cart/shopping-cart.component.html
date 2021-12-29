@@ -1,5 +1,11 @@
 <div class="shoppingCart">
-    <p>shopping-cart works!</p>
+
+    <div *ngFor="let shoppingCartItem of shoppingCartItemList">
+
+        <app-menu-item [menuItem]="shoppingCartItem" [showOnly]="true"></app-menu-item><br>
+    </div>
+
+    <div>Total cost: {{totalItemCost | number: '0.2-2' }}€</div>
 
     <input type="button" value="Bestellen">
 

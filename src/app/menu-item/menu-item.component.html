@@ -1,6 +1,6 @@
 <div>Title: {{menuItem.title}}</div>
-<div>Description: {{menuItem.description}}</div>
+<div *ngIf="showOnly == false">Description: {{menuItem.description}}</div>
 <div>Price: {{menuItem.price}}</div>
 <div>allergens: {{menuItem.allergens}}</div>
 <div>status: {{menuItem.status}}</div>
-<button>Add to ShoppingCart</button>
+<input type="button" *ngIf="showOnly ==false" (click)="onAddToShoppingCartClicked()" value="Add to ShoppingCard">

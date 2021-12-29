@@ -10,15 +10,24 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
 export class ShoppingCartComponent implements OnInit {
 
   shoppingCartItemList:MenuItemModel[] = []
+  totalItemCost:number = 0;
 
-  constructor(private shoppingCartService:ShoppingCartService) { }
+  constructor(private shoppingCartService:ShoppingCartService) { 
+    
+  }
 
   ngOnInit(): void {
+    this.shoppingCartService.shoppingCartObservable.subscribe((newItem) => {
+      this.shoppingCartItemList.push(newItem);
+      this.calcTotalItemCost();
+    });
   }
 
-  addToList(item:MenuItemModel):void
+  calcTotalItemCost():void
   {
-    this.shoppingCartService.currentValue.subscribe((newItem) => {this.shoppingCartItemList.push(newItem)});
+    this.totalItemCost = 0;
+    this.shoppingCartItemList.forEach((item) => {
+      this.totalItemCost += item.price;
+    });
   }
-
 }

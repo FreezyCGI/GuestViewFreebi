@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
   selector: 'app-main',
@@ -7,25 +8,19 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class MainComponent implements OnInit
 {
-
   title = 'GuestViewFreebi';
-  shoppingCartActive: boolean = false;
+  shoppingCartActive: boolean = true;
 
-  @HostListener('document:click', ['$event']) onDocumentClick(event:MouseEvent) {
-    this.shoppingCartActive = false;
-    event.stopPropagation();
-  }
-
-  constructor() { }
+  constructor(private shoppingCartService:ShoppingCartService) { }
 
   ngOnInit(): void
   {
+
   }
 
   onBtnShoppingCartClickedEvent(event:MouseEvent)
   {
     this.shoppingCartActive = true;
-    event.stopPropagation();
   }
 
 }

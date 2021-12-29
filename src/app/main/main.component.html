@@ -4,7 +4,7 @@
 
     <app-nav-bar class="navBarTop" (onBtnShoppingCartClickedEvent)="onBtnShoppingCartClickedEvent($event)"></app-nav-bar>
 
-    <div class="shoppingCart" *ngIf="shoppingCartActive" (click)="$event.stopPropagation();">
+    <div class="shoppingCart" *ngIf="shoppingCartActive">
         <app-shopping-cart></app-shopping-cart>
     </div>
     

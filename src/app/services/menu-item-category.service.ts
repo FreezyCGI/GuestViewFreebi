@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MenuItemModel } from '../models/menu-item-model.model';
+import { MenuItemCategory } from '../models/menu-item-category.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -11,13 +11,13 @@ export class MenuItemCategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCategories(): Observable<MenuItemModel[]>
+  getAllCategories(): Observable<MenuItemCategory[]>
   {
-    return this.http.get<MenuItemModel[]>("http://localhost:3000/menuCategories");
+    return this.http.get<MenuItemCategory[]>("http://localhost:3000/menuCategories");
   }
 
-  getCategory(title:string): Observable<MenuItemModel[]>
+  getCategory(title:string): Observable<MenuItemCategory>
   {
-    return this.http.get<MenuItemModel[]>("http://localhost:3000/menuCategories/" + title);
+    return this.http.get<MenuItemCategory>("http://localhost:3000/menuCategories/" + title);
   }
 }

@@ -49,7 +49,7 @@ app.get("/menuCategories/:title", (req, res) =>
     "where LOWER(cat.title) = LOWER($1);", 
     [req.params.title])
     .then((data) => {
-        res.status(200).send(data.rows);
+        res.status(200).send(data.rows[0]);
     });
 });
 

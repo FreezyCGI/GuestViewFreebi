@@ -16,4 +16,9 @@ export class MenuItemServiceService
   {
     return this.http.get<MenuItemModel[]>("http://localhost:3000/menuList");
   }
+
+  getAllMenuItemsByCategory(category:string): Observable<MenuItemModel[]>
+  {
+    return this.http.get<MenuItemModel[]>("http://localhost:3000/menuList/" + category);
+  }
 }

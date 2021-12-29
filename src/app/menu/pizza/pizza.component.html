@@ -1,3 +1,7 @@
 <app-nav-bar-menu></app-nav-bar-menu>
 
-<p>pizza works!</p>
+<div  *ngFor="let menuItem of menuItemList">
+    <app-menu-item [menuItem]="menuItem"></app-menu-item>
+    <br>
+    <br>
+</div>

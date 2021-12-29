@@ -44,9 +44,22 @@ app.get("/menuCategories", (req, res) =>
 app.get("/menuList/:category", (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');
-    pool.query("select * from menu_items items, menu_categories cat, menu_itemsXmenu_categories merger " +
-    "where items.itemId = merger.itemId and cat.categoryId = merger.categoryId and cat.categoryId = $1;", 
+    pool.query("select items.itemid, items.title, items.description, price, allergens, status "+
+    "from menu_items items, menu_categories cat, menu_itemsXmenu_categories merger " +
+    "where items.itemId = merger.itemId and cat.categoryId = merger.categoryId and LOWER(cat.title) = LOWER($1);", 
     [req.params.category])
+    .then((data) => {
+        res.status(200).send(data.rows);
+    });
+});
+
+app.get("/categoryInfos/:title", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    pool.query("select categoryId, title, description "+
+    "from menu_categories cat " +
+    "where LOWER(cat.title) = LOWER($1);", 
+    [req.params.title])
     .then((data) => {
         res.status(200).send(data.rows);
     });

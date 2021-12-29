@@ -7,18 +7,17 @@ import { catchError, retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class MenuItemServiceService
-{
+export class MenuItemCategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getAllMenuItems(): Observable<MenuItemModel[]>
+  getAllCategories(): Observable<MenuItemModel[]>
   {
-    return this.http.get<MenuItemModel[]>("http://localhost:3000/menuList");
+    return this.http.get<MenuItemModel[]>("http://localhost:3000/menuCategories");
   }
 
-  getAllMenuItemsByCategory(title:string): Observable<MenuItemModel[]>
+  getCategory(title:string): Observable<MenuItemModel[]>
   {
-    return this.http.get<MenuItemModel[]>("http://localhost:3000/menuList/" + title);
+    return this.http.get<MenuItemModel[]>("http://localhost:3000/menuCategories/" + title);
   }
 }

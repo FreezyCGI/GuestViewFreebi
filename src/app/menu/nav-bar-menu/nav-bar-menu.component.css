@@ -1,4 +1,5 @@
 .navMenu{
     grid-row: 2;
     border-style: solid;
+    height: 30px;
 }

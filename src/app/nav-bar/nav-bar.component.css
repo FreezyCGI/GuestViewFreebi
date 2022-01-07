@@ -2,7 +2,10 @@
     display: grid ;
     grid-template-rows: 1fr;
     grid-template-columns: 5fr 1fr 1fr;
+    height: 50px;
+    align-items: center;
   }
+
 
 .shoppingCartButton{
     grid-column: 3;
@@ -19,4 +22,8 @@
 
 a{
     margin-right: 15px;
+}
+
+button{
+    box-shadow: 2px 2px 4px 1px rgba(20,20,20,0.4);
 }

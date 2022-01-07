@@ -3,5 +3,7 @@
 <div>Price: {{menuItem.price | number: '0.2-2'}}€</div>
 <div>allergens: {{menuItem.allergens}}</div>
 <div>status: {{menuItem.status}}</div>
-<input type="button" *ngIf="showOnly ==false" (click)="onAddToShoppingCartClicked()" value="Add to ShoppingCard">
-<span class="material-icons" *ngIf="showOnly ==false"> shopping_cart_checkout </span>
+<button type="button"  *ngIf="showOnly ==false" (click)="onAddToShoppingCartClicked()" value="Add to ShoppingCard"> 
+    <i class="material-icons">shopping_cart_checkout</i><br>
+    Add to ShoppingCard
+</button>

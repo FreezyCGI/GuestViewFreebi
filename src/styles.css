@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background: linear-gradient(90deg, rgba(69,25,210,1) 0%, rgba(25,118,210,1) 53%, rgba(100,181,246,1) 100%);
+}
 
 button{
     box-shadow: 2px 2px 4px 1px rgba(20,20,20,0.4);

@@ -4,6 +4,9 @@
     display: grid ;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: min-content 1fr;
+    background-color: white;
+    align-content: center;
+    margin: 100px ;
   }
 
 
@@ -12,6 +15,7 @@
     grid-row: 2;
     border-style: solid;
     min-height: 80vh;
+    margin: 1px;
 }
 
 

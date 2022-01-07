@@ -1,16 +1,18 @@
 <div class="mainContainer">
     <div class="firstColumn"> 
-        <a routerLink="">Home</a>
-        <a routerLink="/all">Menu</a>
-        <a routerLink="/myOrders">My Order</a>
-        <a routerLink="/reviews">reviews</a>
+        <span class="material-icons"> home </span><a routerLink="">Home</a>
+        <span class="material-icons"> menu_book </span><a routerLink="/all">Menu</a>
+        <span class="material-icons"> shopping_bag </span><a routerLink="/myOrders">My Order</a>
+        <span class="material-icons"> mode_edit </span><a routerLink="/reviews">reviews</a>
     </div>
    
     <div class="callWaiterButton">
+        <span class="material-icons"> notification_important </span>
         <input type="button" value="Call Waiter" (click)="onBtnCallWaiterClicked($event)" >
     </div>
     
     <div class="shoppingCartButton">
+        <span class="material-icons"> shopping_cart </span>
         <input type="button" value="ShoppingCart" (click)="onBtnShoppingCartClicked($event)" >
     </div>
 </div>

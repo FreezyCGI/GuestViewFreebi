@@ -4,3 +4,4 @@
 <div>allergens: {{menuItem.allergens}}</div>
 <div>status: {{menuItem.status}}</div>
 <input type="button" *ngIf="showOnly ==false" (click)="onAddToShoppingCartClicked()" value="Add to ShoppingCard">
+<span class="material-icons" *ngIf="showOnly ==false"> shopping_cart_checkout </span>

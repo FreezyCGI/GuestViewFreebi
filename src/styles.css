@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
+button{
+    box-shadow: 2px 2px 4px 1px rgba(20,20,20,0.4);
+}

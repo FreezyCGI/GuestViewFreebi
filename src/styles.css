@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    background: linear-gradient(300deg, rgba(247,157,101,1) 0%, rgba(255,255,255,1) 55%, rgba(25,118,210,1) 100%);
+    background: linear-gradient(293deg, rgba(25,118,210,1) 0%, rgba(255,255,255,1) 50%, rgba(25,118,210,1) 100%);
 }
 
 button{
@@ -8,6 +8,6 @@ button{
     color: #1976D2ff;
     background-color: white;
     border: white;
-    border-radius: 3px;
+    border-radius: 1px;
     font-weight: bold;
 }

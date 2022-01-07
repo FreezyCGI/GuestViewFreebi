@@ -1,0 +1,46 @@
+body{
+    background: linear-gradient(300deg, rgba(247,157,101,1) 0%, rgba(255,255,255,1) 55%, rgba(25,118,210,1) 100%);
+}
+
+body{
+    background: linear-gradient(315deg, rgba(255,136,63,1) 0%, rgba(100,181,246,1) 57%, rgba(25,118,210,1) 100%);
+}
+
+body{
+    background: linear-gradient(90deg, rgba(255,199,164,1) 0%, rgba(100,178,255,1) 100%);
+}
+body{
+    background: linear-gradient(90deg, rgba(247,157,101,1) 0%, rgba(100,181,246,1) 53%, rgba(25,118,210,1) 100%);
+}
+
+body{
+    background: linear-gradient(300deg, rgba(187,222,251,1) 0%, rgba(100,181,246,1) 55%, rgba(25,118,210,1) 100%);
+}
+body{
+    background: linear-gradient(293deg, rgba(25,118,210,1) 0%, rgba(255,255,255,1) 50%, rgba(25,118,210,1) 100%);
+}
+
+
+body{
+    background: linear-gradient(293deg, rgba(199,24,5,1) 0%, rgba(255,255,255,1) 50%, rgba(52,184,23,1) 100%);
+}
+body{
+    background: linear-gradient(293deg, rgba(247,157,101,1) 0%, rgba(255,255,255,1) 50%, rgba(247,157,101,1) 100%);
+}
+
+
+/* would need to redo the paths */
+body{
+    background-size: contain;
+    background-image: url("C:\Users\Elisabeth Gassinger\Documents\GitHub\GuestViewFreebi\designs\images\pasta (1).jpg");
+}
+
+body{
+    background-size: contain;
+    background-image: url("C:\Users\Elisabeth Gassinger\Documents\GitHub\GuestViewFreebi\designs\images\Pizza Margherita (5).jpg");
+}
+
+body{
+    background-size: contain;
+    background-image: url("C:\Users\Elisabeth Gassinger\Documents\GitHub\GuestViewFreebi\designs\images\Lasagne al Forno Classico.jpg");
+}

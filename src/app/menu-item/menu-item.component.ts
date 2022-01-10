@@ -10,9 +10,6 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
 export class MenuItemComponent implements OnInit
 {
   @Input()
-  showOnly: boolean = false;
-
-  @Input()
   menuItem: MenuItemModel = new MenuItemModel;
 
   constructor(private shoppingCartService:ShoppingCartService) { }

@@ -7,4 +7,5 @@ export class MenuItemModel
     allergens: string = "";
     status: string = "";
     categories: number[] = [];
+    count:number = 0;
 }

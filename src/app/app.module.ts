@@ -17,6 +17,7 @@ import { PastaComponent } from './menu/pasta/pasta.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { NavBarMenuComponent } from './menu/nav-bar-menu/nav-bar-menu.component';
 import { MainComponent } from './main/main.component';
+import { ShoppingCartItemComponent } from './shopping-cart/shopping-cart-item/shopping-cart-item.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MainComponent } from './main/main.component';
     PastaComponent,
     MyOrdersComponent,
     NavBarMenuComponent,
-    MainComponent
+    MainComponent,
+    ShoppingCartItemComponent
   ],
   imports: [
     BrowserModule,

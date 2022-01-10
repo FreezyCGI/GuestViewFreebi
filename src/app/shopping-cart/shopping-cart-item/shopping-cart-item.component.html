@@ -1,0 +1,9 @@
+<div>Title: {{menuItem.title}}</div>
+<div>Price: {{menuItem.price | number: '0.2-2'}}€</div>
+<div>allergens: {{menuItem.allergens}}</div>
+<div>status: {{menuItem.status}}</div>
+<div>Count: {{menuItem.count}}</div>
+<div>
+    <button (click)="onBtnPlusClicked()">+</button>
+    <button (click)="onBtnMinusClicked()">-</button>
+</div>

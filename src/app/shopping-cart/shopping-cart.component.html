@@ -3,7 +3,7 @@
 
     <div *ngFor="let shoppingCartItem of shoppingCartItemList">
 
-        <app-menu-item [menuItem]="shoppingCartItem" [showOnly]="true"></app-menu-item><br>
+        <app-shopping-cart-item [menuItem]="shoppingCartItem" ></app-shopping-cart-item><br>
     </div>
 
     <div>Total cost: {{totalItemCost | number: '0.2-2' }}€</div><br>

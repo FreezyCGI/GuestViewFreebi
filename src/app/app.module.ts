@@ -18,6 +18,8 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { NavBarMenuComponent } from './menu/nav-bar-menu/nav-bar-menu.component';
 import { MainComponent } from './main/main.component';
 import { ShoppingCartItemComponent } from './shopping-cart/shopping-cart-item/shopping-cart-item.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs'; 
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ShoppingCartItemComponent } from './shopping-cart/shopping-cart-item/sh
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

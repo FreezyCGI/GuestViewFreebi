@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Event } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,6 +6,12 @@ import { Event } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  links = [
+    {link: '/home', iconName: 'home', name: 'Home'}, 
+    {link: '/all', iconName: 'menu_book', name: 'Menu'}, 
+    {link: '/myOrders', iconName: 'shopping_bag', name: 'My Orders'}, 
+    {link: '/reviews', iconName: 'mode_edit', name: 'Reviews'}];
+  activeLink = this.links[0];
 
   @Output() onBtnShoppingCartClickedEvent = new EventEmitter<MouseEvent>();
 

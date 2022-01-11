@@ -1,18 +1,27 @@
 <div class="mainContainer">
-    <div class="firstColumn"> 
-        <i class="material-icons"> home </i><a routerLink="">Home</a>
+    <div class="firstColumn">
+        <!-- <i class="material-icons"> home </i><a routerLink="">Home</a>
         <i class="material-icons"> menu_book </i><a routerLink="/all">Menu</a>
         <i class="material-icons"> shopping_bag </i><a routerLink="/myOrders">My Order</a>
-        <i class="material-icons"> mode_edit </i><a routerLink="/reviews">reviews</a>
+        <i class="material-icons"> mode_edit </i><a routerLink="/reviews">reviews</a> -->
+        <nav mat-tab-nav-bar>
+            <a mat-tab-link *ngFor="let link of links" 
+            (click)="activeLink = link" 
+            [active]="activeLink == link"
+            [routerLink]="link.link">
+                <i class="material-icons"> {{ link.iconName }} </i>
+                {{link.name}}
+            </a>
+        </nav>
     </div>
-   
+
     <div class="callWaiterButton">
         <button type="button" value="Call Waiter" (click)="onBtnCallWaiterClicked($event)">
             <i class="material-icons"> notification_important </i><br>
             Call Waiter
         </button>
     </div>
-    
+
     <div class="shoppingCartButton">
         <button type="button" value="ShoppingCart" (click)="onBtnShoppingCartClicked($event)">
             <i class="material-icons"> shopping_cart </i><br>

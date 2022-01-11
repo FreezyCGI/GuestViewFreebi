@@ -5,7 +5,7 @@
         <i class="material-icons"> shopping_bag </i><a routerLink="/myOrders">My Order</a>
         <i class="material-icons"> mode_edit </i><a routerLink="/reviews">reviews</a> -->
         <nav mat-tab-nav-bar>
-            <a mat-tab-link *ngFor="let link of links" 
+            <a class="matTab" mat-tab-link *ngFor="let link of links" 
             (click)="activeLink = link" 
             [active]="activeLink == link"
             [routerLink]="link.link">

@@ -17,10 +17,11 @@
 
 .firstColumn{
     grid-column: 1;
-
 }
 
-a{
-    margin-right: 15px;
+/* ToDo @Chibi formatting the matTab */
+.matTab{       
+    color: #1976D2ff;   
+    font-weight: bold;    
 }
 

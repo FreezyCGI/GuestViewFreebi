@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Review } from '../models/review.model';
+import { ReviewService } from '../services/review.service';
 
 @Component({
   selector: 'app-reviews',
@@ -7,18 +8,21 @@ import { Review } from '../models/review.model';
   styleUrls: ['./reviews.component.css']
 })
 
-export class ReviewsComponent implements OnInit {
+export class ReviewsComponent implements OnInit
+{
+  reviewList: Review[] = [];
 
-  reviewList:Review[] = [];
-
-  constructor() { 
+  constructor(private reviewService: ReviewService)
+  {
 
   }
 
-  ngOnInit(): void {
-    this.reviewList = [
-      {description:"desc1", reviewId:1, createdAt:new Date(), stars:2},
-      {description:"desc2", reviewId:2, createdAt:new Date(), stars:3}]
+  ngOnInit(): void
+  {
+    this.reviewService.getAllReviews().subscribe((reviewArr) =>
+    {
+      this.reviewList = reviewArr;
+    });
   }
 
   //Pfusch 
@@ -26,11 +30,11 @@ export class ReviewsComponent implements OnInit {
   //Example: input: 10
   //         output: array[10] 
   //needed for *ngFor loop of star-images
-  starsToArr(stars:number):number[]
+  starsToArr(stars: number): number[]
   {
-    let starArr:number[] = [];
+    let starArr: number[] = [];
 
-    for(let i = 0; i < stars; i++)
+    for (let i = 0; i < stars; i++)
     {
       starArr.push(0);
     }

@@ -66,6 +66,28 @@ app.get("/menuList/:category", (req, res) =>
     });
 });
 
+app.get("/reviews", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    pool.query("select * from reviews").
+        then((data) =>
+        {
+            res.status(200).send(data.rows);
+        });
+});
+
+app.post("/review", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    pool.query("insert into reviews(description, stars, createdAt) "+
+                "values($1, $2, $3)", 
+    [req.body.description, req.body.stars, req.body.createdAt]).
+        then((data) =>
+        {
+            res.status(200).send();
+        });
+});
+
 app.get("/resetDatabase", (req, res) =>
 {
     let menuItemsJson = require('../json_Files/menu_Items.json');

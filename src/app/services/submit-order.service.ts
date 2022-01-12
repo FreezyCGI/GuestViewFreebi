@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
+import { Jwt } from '../models/jwt.model';
 import { ConfigService } from './config.service';
 
 @Injectable({
@@ -13,7 +15,7 @@ export class SubmitOrderService
     private configService: ConfigService,
     private cookieService: CookieService) { }
 
-  submitOrder()
+  submitOrder():Observable<Jwt>
   {
     let tableId = this.cookieService.get("tableId");
     if (tableId == null)
@@ -21,6 +23,6 @@ export class SubmitOrderService
       console.error("no table id in postReview");
     }
 
-    return this.http.post(this.configService.baseUrl + "/payOrder", {tableId: tableId}, this.configService.httpOptionsForJson);
+    return this.http.post<Jwt>(this.configService.baseUrl + "/payOrder", {tableId: tableId}, this.configService.httpOptionsForJson);
   }
 }

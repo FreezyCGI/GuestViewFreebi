@@ -100,7 +100,10 @@ app.get("/resetDatabase", (req, res) =>
         "delete from menu_categories;").then(() => 
         {
             uploadMenuCategories().
-                then(() => uploadMenuItems());
+                then(() => {
+                    uploadMenuItems(); 
+                    console.log("Reset Database successfull");
+                });
 
             res.status(200).send(menuItemsJson);
         });
@@ -146,9 +149,10 @@ app.get("/resetDatabase", (req, res) =>
                                         menuItemsJson[key].itemId,
                                         menuItemsJson[key].category[keyCategory]
                                     ]
-                                );
+                                );           
                             }
                         }
+                        
                     })
             }
         }

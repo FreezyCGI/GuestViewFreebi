@@ -3,6 +3,7 @@ import { MenuItemModel } from '../models/menu-item-model.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,15 @@ import { catchError, retry } from 'rxjs/operators';
 export class MenuItemServiceService
 {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private configService: ConfigService) { }
 
   getAllMenuItems(): Observable<MenuItemModel[]>
   {
-    return this.http.get<MenuItemModel[]>("http://localhost:3000/menuList");
+    return this.http.get<MenuItemModel[]>(this.configService.baseUrl + "/menuList");
   }
 
   getAllMenuItemsByCategory(title:string): Observable<MenuItemModel[]>
   {
-    return this.http.get<MenuItemModel[]>("http://localhost:3000/menuList/" + title);
+    return this.http.get<MenuItemModel[]>(this.configService.baseUrl + "/menuList/" + title);
   }
 }

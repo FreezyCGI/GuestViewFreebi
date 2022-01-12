@@ -14,7 +14,8 @@ app.use(bodyParser.json()); // support json encoded bodies
 const checkAuth = require('./check_auth');
 
 const loginRoutes = require('./login');
-app.use("/login", loginRoutes);
+const { table } = require('console');
+app.use("/payOrder", loginRoutes);
 
 app.get("/", (req, res) =>
 {
@@ -86,6 +87,13 @@ app.post("/review", (req, res) =>
         {
             res.status(200).send();
         });
+});
+
+app.post("/order", checkAuth, (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    let tableId = req.tableId;
+    console.log(tableId);
 });
 
 app.get("/resetDatabase", (req, res) =>

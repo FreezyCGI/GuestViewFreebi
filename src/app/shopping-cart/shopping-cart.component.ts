@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItemModel } from '../models/menu-item-model.model';
 import { ShoppingCartService } from '../services/shopping-cart.service';
+import { SubmitOrderService } from '../services/submit-order.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,20 +14,20 @@ export class ShoppingCartComponent implements OnInit
   shoppingCartItemList: MenuItemModel[] = []
   totalItemCost: number = 0;
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService, private submitOrderService:SubmitOrderService) { }
 
   ngOnInit(): void
   {
     this.shoppingCartService.addToShoppingCartObservable
       .subscribe((menuitem) => this.onAddToShoppingCart(menuitem))
 
-      this.shoppingCartService.removeFromShoppingCartObservable
+    this.shoppingCartService.removeFromShoppingCartObservable
       .subscribe((menuItem) => this.onRemoveFromShoppingCart(menuItem));
   }
 
   onAddToShoppingCart(newItem: MenuItemModel): void
   {
-    if(this.shoppingCartItemList.includes(newItem))
+    if (this.shoppingCartItemList.includes(newItem))
     {
       let index = this.shoppingCartItemList.indexOf(newItem);
       this.shoppingCartItemList[index].count++;
@@ -44,7 +45,7 @@ export class ShoppingCartComponent implements OnInit
   {
     itemToRemove.count--;
 
-    if(itemToRemove.count <= 0)
+    if (itemToRemove.count <= 0)
     {
       let index = this.shoppingCartItemList.indexOf(itemToRemove);
       this.shoppingCartItemList.splice(index, 1);
@@ -62,8 +63,8 @@ export class ShoppingCartComponent implements OnInit
     });
   }
 
-  submitOrder():void
+  submitOrder(): void
   {
-    
+    this.submitOrderService.submitOrder().subscribe();
   }
 }

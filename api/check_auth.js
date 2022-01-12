@@ -1,13 +1,10 @@
 let cfg = require('./config.json')
 const jwt = require('jsonwebtoken');
 
-// EX4 TODO:
-// - verify token using jwt_key of "secret"
-// - set req.userData to the user information stored in the token's payload
 module.exports = (req, res, next) => {
 
     try{
-        req.userData = jwt.verify(req.headers.authorization, "secret");
+        req.tableId = jwt.verify(req.headers.authorization, "secret");
 
         next();
     }

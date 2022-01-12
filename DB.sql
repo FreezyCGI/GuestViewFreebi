@@ -43,9 +43,9 @@ create table reviews
 	createdAt date
 );
 
-
 	  
 select * from menu_items;
 select * from menu_categories;
 select * from menu_items items, menu_categories cat, menu_itemsXmenu_categories merger
 where items.itemId = merger.itemId and cat.categoryId = merger.categoryId;
+select * from reviews;

@@ -1,5 +1,18 @@
 <h1>Reviews</h1>
 
+<div>
+    <h2>Write your review:</h2>
+    <form #form>
+        <div>Stars: <input type="number" #stars></div>
+        <div>Description:
+            <textarea #desc></textarea>
+        </div>
+        <div><button type="button" (click)="submit(stars.value, desc.value)">Submit</button></div>
+    </form>
+</div>
+
+<br><br>
+
 <div>  
     <div *ngFor="let review of reviewList">
         <div>Stars: <img *ngFor="let i of starsToArr(review.stars)" src="/assets/images/star.png"></div>

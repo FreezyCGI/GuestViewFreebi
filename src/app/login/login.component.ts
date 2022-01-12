@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       let id = params['id'];
-      this.cookieService.set("qrCodeId", id, 1);
+      this.cookieService.set("tableId", id, new Date().getDate() + 1, '/');
       this.router.navigateByUrl("/home");
     });
   }

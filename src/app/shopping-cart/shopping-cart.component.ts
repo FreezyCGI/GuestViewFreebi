@@ -61,4 +61,9 @@ export class ShoppingCartComponent implements OnInit
       this.totalItemCost += item.price * item.count;
     });
   }
+
+  submitOrder():void
+  {
+    
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-my-orders',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyOrdersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookieService:CookieService) { }
 
   ngOnInit(): void {
+    let tableId = this.cookieService.get("tableId");
+    alert(tableId);
   }
 
 }

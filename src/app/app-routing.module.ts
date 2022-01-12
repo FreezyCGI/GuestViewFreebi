@@ -8,6 +8,7 @@ import { TopSellersComponent } from './menu/top-sellers/top-sellers.component';
 import { WeeklySpecialsComponent } from './menu/weekly-specials/weekly-specials.component';
 import { PizzaComponent } from './menu/pizza/pizza.component';
 import { PastaComponent } from './menu/pasta/pasta.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'topSellers', component:TopSellersComponent },
   { path: 'weeklySpecials', component:WeeklySpecialsComponent },
   { path: 'pizza', component:PizzaComponent },
-  { path: 'pasta', component:PastaComponent }
+  { path: 'pasta', component:PastaComponent },
+  { path: 'login/:id', component:LoginComponent}
 ];
 
 @NgModule({

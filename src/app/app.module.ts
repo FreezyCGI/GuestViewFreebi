@@ -19,7 +19,8 @@ import { NavBarMenuComponent } from './menu/nav-bar-menu/nav-bar-menu.component'
 import { MainComponent } from './main/main.component';
 import { ShoppingCartItemComponent } from './shopping-cart/shopping-cart-item/shopping-cart-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from '@angular/material/tabs'; 
+import { MatTabsModule } from '@angular/material/tabs';
+import { LoginComponent } from './login/login.component'; 
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MyOrdersComponent,
     NavBarMenuComponent,
     MainComponent,
-    ShoppingCartItemComponent
+    ShoppingCartItemComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

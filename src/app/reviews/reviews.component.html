@@ -1,1 +1,10 @@
-<p>reviews works!</p>
+<h1>Reviews</h1>
+
+<div>  
+    <div *ngFor="let review of reviewList">
+        <div>Stars: <img *ngFor="let i of starsToArr(review.stars)" src="/assets/images/star.png"></div>
+        <div>Descrption: {{review.description}}</div>
+        <div>Created: {{review.createdAt.toLocaleString()}}</div>
+        <br>
+    </div>   
+</div>

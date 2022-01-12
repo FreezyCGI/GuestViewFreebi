@@ -4,7 +4,7 @@ import { Injectable, isDevMode } from '@angular/core';
 const baseUrlDev:string = "http://localhost:3000";
 const baseUrlProdFreezy:string = "http://192.168.178.72:3000";
 const baseUrlProdChibi:string = "http://192.168.178.28:3000";
-const IsChibi:boolean = true;
+const IsChibi:boolean = false;
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class ConfigService {
       this.baseUrl = baseUrlDev;
     }
     else{
-      if(IsChibi)
+      if(!IsChibi)
       {
         this.baseUrl = baseUrlProdFreezy;
       }

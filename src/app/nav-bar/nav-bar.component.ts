@@ -32,10 +32,6 @@ export class NavBarComponent implements OnInit {
     });
   }
 
-  onBtnShoppingCartClicked(event:MouseEvent)
-  {
-    this.onBtnShoppingCartClickedEvent.emit(event);
-  }
 
   onBtnCallWaiterClicked(event:MouseEvent){
     //ToDo: implement methode for the button - should porbably change color of nav and button should say waiter is called

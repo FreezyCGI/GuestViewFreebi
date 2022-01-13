@@ -21,6 +21,7 @@ import { ShoppingCartItemComponent } from './shopping-cart/shopping-cart-item/sh
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LoginComponent } from './login/login.component'; 
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule, 
+    MatBottomSheetModule
   ],
   providers: [],
   bootstrap: [AppComponent]

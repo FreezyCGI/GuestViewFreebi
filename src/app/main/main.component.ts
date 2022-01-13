@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ShoppingCartService } from '../services/shopping-cart.service';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +13,8 @@ export class MainComponent implements OnInit
   title = 'GuestViewFreebi';
   shoppingCartActive: boolean = true;
 
-  constructor(private shoppingCartService:ShoppingCartService) { }
+  constructor(private shoppingCartService:ShoppingCartService,
+    private _bottomSheet: MatBottomSheet) { }
 
   ngOnInit(): void
   {
@@ -23,4 +26,7 @@ export class MainComponent implements OnInit
     this.shoppingCartActive = true;
   }
 
+  openBottomSheet(): void {
+    this._bottomSheet.open(ShoppingCartComponent);
+  }
 }

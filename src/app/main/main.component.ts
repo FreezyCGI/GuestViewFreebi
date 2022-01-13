@@ -27,6 +27,7 @@ export class MainComponent implements OnInit
   }
 
   openBottomSheet(): void {
+    
     this._bottomSheet.open(ShoppingCartComponent);
   }
 }

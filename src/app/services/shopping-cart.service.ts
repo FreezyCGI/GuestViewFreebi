@@ -7,31 +7,51 @@ import { MenuItemModel } from '../models/menu-item-model.model';
 })
 export class ShoppingCartService
 {
-  private _addToShoppingCartObservable = new Subject<MenuItemModel>();
-  public addToShoppingCartObservable = this._addToShoppingCartObservable.asObservable(); 
+  private _shoppingCartChangedObservable = new Subject();
+  public shoppingCartChangedObservable = this._shoppingCartChangedObservable.asObservable();  
 
-  private _removeFromShoppingCartObservable = new Subject<MenuItemModel>();
-  public removeFromShoppingCartObservable = this._removeFromShoppingCartObservable.asObservable(); 
-
-  private _openShoppingCartObservable = new Subject();
-  public openShoppingCartObservable = this._openShoppingCartObservable.asObservable(); 
+  shoppingCartItemList: MenuItemModel[] = [];
 
   constructor() { }
 
-  addToShoppingCart(item: MenuItemModel):void
+  calcTotalItemCost(): number
   {
-    this._openShoppingCartObservable.next("");
-    this._addToShoppingCartObservable.next(item);
+    let totalItemCost = 0;
+    this.shoppingCartItemList.forEach((item) =>
+    {
+      totalItemCost += item.price * item.count;
+    });
+
+    return totalItemCost;
   }
 
-  removeFromShoppingCart(item: MenuItemModel):void
+  removeFromShoppingCart(itemToRemove: MenuItemModel): void
   {
-    this._removeFromShoppingCartObservable.next(item);
+    itemToRemove.count--;
+
+    if (itemToRemove.count <= 0)
+    {
+      let index = this.shoppingCartItemList.indexOf(itemToRemove);
+      this.shoppingCartItemList.splice(index, 1);
+    }
+
+    this._shoppingCartChangedObservable.next(0);
   }
 
-  openShoppingCart():void
+  addToShoppingCart(newItem: MenuItemModel): void
   {
-    this._openShoppingCartObservable.next("");
+    if (this.shoppingCartItemList.includes(newItem))
+    {
+      let index = this.shoppingCartItemList.indexOf(newItem);
+      this.shoppingCartItemList[index].count++;
+    }
+    else
+    {
+      newItem.count = 1;
+      this.shoppingCartItemList.push(newItem);
+    }
+
+    this._shoppingCartChangedObservable.next(0);
   }
 
 }

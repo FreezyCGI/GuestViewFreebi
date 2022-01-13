@@ -12,9 +12,11 @@ export class MyOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     let tableId = this.cookieService.get("tableId");
-    alert(tableId);
+    if(tableId  != "")
+      alert(tableId);
     let jwt = this.cookieService.get("tableIdJWT");
-    alert(jwt);
+    if(jwt  != "")
+      alert(jwt);
   }
 
 }

@@ -5,19 +5,14 @@
 
 <div class="mainContainer" >
 
-    <app-nav-bar class="navBarTop" (onBtnShoppingCartClickedEvent)="onBtnShoppingCartClickedEvent($event)"></app-nav-bar>
-
-    <div class="shoppingCart" *ngIf="shoppingCartActive">
-        <app-shopping-cart></app-shopping-cart>
-    </div>
-    
+    <app-nav-bar class="navBarTop"></app-nav-bar>
 
     <div class="content"> 
         <router-outlet></router-outlet>
     </div>
 
     <div class="shoppingCartButton">
-        <button type="button" value="ShoppingCart" (click)="openBottomSheet()">
+        <button type="button" value="ShoppingCart" (click)="openShoppingCart()">
             <i class="material-icons"> shopping_cart </i><br>
             ShoppingCart
         </button>

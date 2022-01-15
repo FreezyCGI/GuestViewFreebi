@@ -1,22 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Order } from '../models/order.model';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-my-orders',
   templateUrl: './my-orders.component.html',
   styleUrls: ['./my-orders.component.css']
 })
-export class MyOrdersComponent implements OnInit {
+export class MyOrdersComponent implements OnInit
+{
+  orderList:Order[] = [];
 
-  constructor(private cookieService:CookieService) { }
+  constructor(private cookieService: CookieService,
+    private orderService: OrderService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
     let tableId = this.cookieService.get("tableId");
-    if(tableId  != "")
-      alert(tableId);
     let jwt = this.cookieService.get("tableIdJWT");
-    if(jwt  != "")
-      alert(jwt);
+    if ( jwt == "")
+    {
+      console.log("jwt is empty");
+      return;
+    }
+
+    if (tableId == "")
+    {
+      console.log("tableId is empty");
+      return;
+    }
+
+    this.orderService.getAllOrders(jwt).subscribe((orders:Order[]) =>{
+      console.log(orders);
+      this.orderList = orders;
+    });
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,8 +12,6 @@ export class NavBarComponent implements OnInit {
     {link: '/myOrders', iconName: 'shopping_bag', name: 'My Orders'}, 
     {link: '/reviews', iconName: 'mode_edit', name: 'Reviews'}];
   activeLink = {};
-
-  @Output() onBtnShoppingCartClickedEvent = new EventEmitter<MouseEvent>();
 
   constructor() { }
 

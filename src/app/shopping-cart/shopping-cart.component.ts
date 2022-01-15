@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { MenuItemModel } from '../models/menu-item-model.model';
 import { ShoppingCartService } from '../services/shopping-cart.service';
@@ -17,25 +17,21 @@ export class ShoppingCartComponent implements OnInit
   shoppingCartItemList: MenuItemModel[] = []
   totalItemCost: number = 0;
 
-  constructor(private shoppingCartService: ShoppingCartService, 
-    private submitOrderService:SubmitOrderService,
-    private cookieService:CookieService,
-    private bottomSheetRef: MatBottomSheetRef<ShoppingCartComponent>) {  }
+  constructor(private shoppingCartService: ShoppingCartService,
+    private submitOrderService: SubmitOrderService,
+    private cookieService: CookieService,
+    private router: Router) { }
 
   ngOnInit(): void
   {
-    this.onOpen();
-    this.shoppingCartService.shoppingCartChangedObservable.subscribe(()=>{
+    this.updateShoppingCart();
+    this.shoppingCartService.shoppingCartChangedObservable.subscribe(() =>
+    {
       this.updateShoppingCart();
     });
   }
 
-  onOpen():void
-  {
-    this.updateShoppingCart();
-  }
-
-  updateShoppingCart():void
+  updateShoppingCart(): void
   {
     this.totalItemCost = this.shoppingCartService.calcTotalItemCost();
     this.shoppingCartItemList = this.shoppingCartService.shoppingCartItemList;
@@ -43,9 +39,13 @@ export class ShoppingCartComponent implements OnInit
 
   submitOrder(): void
   {
-    this.submitOrderService.submitOrder(this.shoppingCartItemList).subscribe((jwt) =>{
-      this.cookieService.set("tableIdJWT", jwt.token, new Date().getDate() + 1);
-      alert(jwt.token);
-    });
+    this.submitOrderService.submitOrder(this.shoppingCartItemList)
+      .subscribe((jwt) =>
+      {
+        this.shoppingCartService.clearShoppingCart();
+        this.updateShoppingCart();
+        this.cookieService.set("tableIdJWT", jwt.token, new Date().getDate() + 1);
+        this.router.navigateByUrl("/myOrders");
+      });
   }
 }

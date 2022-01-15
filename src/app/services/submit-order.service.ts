@@ -30,7 +30,7 @@ export class SubmitOrderService
   }
 
   //Optimize item List: just use itemId and count. Dismiss all other variables
-  getOptimizedItemList(itemList:MenuItemModel[]):{ itemId: number, count: number }[]
+  private getOptimizedItemList(itemList:MenuItemModel[]):{ itemId: number, count: number }[]
   { 
     let itemListOptimized: { itemId: number, count: number }[] = [];
 

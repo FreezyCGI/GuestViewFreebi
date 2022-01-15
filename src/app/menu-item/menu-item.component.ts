@@ -21,6 +21,7 @@ export class MenuItemComponent implements OnInit
   onAddToShoppingCartClicked(): void
   {
     this.shoppingCartService.addToShoppingCart(this.menuItem);
+    this.shoppingCartService.openShoppingCart();
   }
 
 }

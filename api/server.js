@@ -37,34 +37,37 @@ app.get("/menuCategories", (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');
     pool.query("select categoryId, title, description from menu_categories")
-    .then((data) => {
-        res.status(200).send(data.rows);
-    });
+        .then((data) =>
+        {
+            res.status(200).send(data.rows);
+        });
 });
 
 app.get("/menuCategories/:title", (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');
-    pool.query("select categoryId, title, description "+
-    "from menu_categories cat " +
-    "where LOWER(cat.title) = LOWER($1);", 
-    [req.params.title])
-    .then((data) => {
-        res.status(200).send(data.rows[0]);
-    });
+    pool.query("select categoryId, title, description " +
+        "from menu_categories cat " +
+        "where LOWER(cat.title) = LOWER($1);",
+        [req.params.title])
+        .then((data) =>
+        {
+            res.status(200).send(data.rows[0]);
+        });
 });
 
 
 app.get("/menuList/:category", (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');
-    pool.query("select items.itemid, items.title, items.description, price, allergens, status "+
-    "from menu_items items, menu_categories cat, menu_itemsXmenu_categories merger " +
-    "where items.itemId = merger.itemId and cat.categoryId = merger.categoryId and LOWER(cat.title) = LOWER($1);", 
-    [req.params.category])
-    .then((data) => {
-        res.status(200).send(data.rows);
-    });
+    pool.query("select items.itemid, items.title, items.description, price, allergens, status " +
+        "from menu_items items, menu_categories cat, menu_itemsXmenu_categories merger " +
+        "where items.itemId = merger.itemId and cat.categoryId = merger.categoryId and LOWER(cat.title) = LOWER($1);",
+        [req.params.category])
+        .then((data) =>
+        {
+            res.status(200).send(data.rows);
+        });
 });
 
 app.get("/reviews", (req, res) =>
@@ -80,9 +83,9 @@ app.get("/reviews", (req, res) =>
 app.post("/review", (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');
-    pool.query("insert into reviews(description, stars, createdAt) "+
-                "values($1, $2, $3)", 
-    [req.body.description, req.body.stars, req.body.createdAt]).
+    pool.query("insert into reviews(description, stars, createdAt) " +
+        "values($1, $2, $3)",
+        [req.body.description, req.body.stars, req.body.createdAt]).
         then((data) =>
         {
             res.status(200).send();
@@ -96,6 +99,96 @@ app.post("/order", checkAuth, (req, res) =>
     console.log(tableId);
 });
 
+app.get("/orders", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+
+    let token = req.query.jwt;
+
+    pool.query("select o.orderId, o.status, o.orderDate, o.paymentReference, mItem.itemId, mItem.title, mItem.description, mItem.price, mItem.allergens, mItem.status, oItem.count " +
+        "from orders o, menu_items mItem, orderedItems oItem " +
+        "where paymentToken = $1 and o.orderId = oItem.orderId and mItem.itemId = oItem.itemId ",
+        [token])
+        .then((data) =>
+        {
+            let orders = [];
+
+            data.rows.forEach((row) =>
+            {
+                insertIntoOrders(row);
+            });
+
+            console.log(orders);
+
+            res.status(200).send(orders);
+
+            function insertIntoOrders(row)
+            {
+                let order = 
+                {
+                    orderId: row.orderid,
+                    status: row.status,
+                    orderDate: row.orderdate,
+                    paymentReference: row.paymentreference,
+                    menuItems: []
+                };
+
+                let orderIndex = findOrder(order.orderId);
+
+                let menuItem =
+                {
+                    itemid: row.itemid,
+                    title: row.title,
+                    description: row.description,
+                    price: row.price,
+                    allergens: row.allergens,
+                    count: row.count
+                };
+
+                if (orderIndex == -1)
+                {
+                    orders.push(order);
+                    order.menuItems.push(menuItem);
+                }
+                else
+                {
+                    orders[orderIndex].menuItems.push(menuItem);
+                }
+            }
+
+            function findOrder(id)
+            {
+                for (let i = 0; i < orders.length; i++)
+                {
+                    if (orders[i].orderId == id)
+                    {
+                        return i;
+                    }
+                }
+
+                return -1;
+            }
+        });
+
+
+});
+
+//https://sebhastian.com/javascript-group-by/
+function groupBy(arr, criteria)
+{
+    const newObj = arr.reduce(function (acc, currentValue)
+    {
+        if (!acc[currentValue[criteria]])
+        {
+            acc[currentValue[criteria]] = [];
+        }
+        acc[currentValue[criteria]].push(currentValue);
+        return acc;
+    }, {});
+    return newObj;
+}
+
+
 app.get("/resetDatabase", (req, res) =>
 {
     let menuItemsJson = require('../json_Files/menu_Items.json');
@@ -104,12 +197,18 @@ app.get("/resetDatabase", (req, res) =>
     res.setHeader('Content-Type', 'application/json');
 
     pool.query("delete from menu_itemsXmenu_categories;" +
+        "delete from orderedItems;" +
+        "delete from menu_categories;" +
         "delete from menu_items;" +
-        "delete from menu_categories;").then(() => 
+        "delete from reviews;" +
+        "delete from orders;"
+        ) 
+        .then(() => 
         {
             uploadMenuCategories().
-                then(() => {
-                    uploadMenuItems(); 
+                then(() =>
+                {
+                    uploadMenuItems();
                     console.log("Reset Database successfull");
                 });
 
@@ -150,17 +249,17 @@ app.get("/resetDatabase", (req, res) =>
                         {
 
                             if (menuItemsJson[key].category.hasOwnProperty(keyCategory))
-                            {                          
+                            {
                                 pool.query("insert into menu_itemsXmenu_categories(itemId, categoryId) " +
                                     "values($1, $2)",
                                     [
                                         menuItemsJson[key].itemId,
                                         menuItemsJson[key].category[keyCategory]
                                     ]
-                                );           
+                                );
                             }
                         }
-                        
+
                     })
             }
         }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, observable, Subject } from 'rxjs';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { Subject } from 'rxjs';
 import { MenuItemModel } from '../models/menu-item-model.model';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +10,11 @@ import { MenuItemModel } from '../models/menu-item-model.model';
 export class ShoppingCartService
 {
   private _shoppingCartChangedObservable = new Subject();
-  public shoppingCartChangedObservable = this._shoppingCartChangedObservable.asObservable();  
+  public shoppingCartChangedObservable = this._shoppingCartChangedObservable.asObservable();
 
   shoppingCartItemList: MenuItemModel[] = [];
 
-  constructor() { }
+  constructor(private _bottomSheet: MatBottomSheet) { }
 
   calcTotalItemCost(): number
   {
@@ -52,6 +54,16 @@ export class ShoppingCartService
     }
 
     this._shoppingCartChangedObservable.next(0);
+  }
+
+  clearShoppingCart(): void
+  {
+    this.shoppingCartItemList = [];
+  }
+
+  openShoppingCart(): void
+  {
+    this._bottomSheet.open(ShoppingCartComponent);
   }
 
 }

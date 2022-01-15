@@ -10,7 +10,7 @@ import { OrderService } from '../services/order.service';
 })
 export class MyOrdersComponent implements OnInit
 {
-  orderList:Order[] = [];
+  orderList: Order[] = [];
 
   constructor(private cookieService: CookieService,
     private orderService: OrderService) { }
@@ -18,8 +18,9 @@ export class MyOrdersComponent implements OnInit
   ngOnInit(): void
   {
     let tableId = this.cookieService.get("tableId");
-    let jwt = this.cookieService.get("tableIdJWT");
-    if ( jwt == "")
+    let jwt: string = this.cookieService.get("orderJWT");
+
+    if (jwt == "")
     {
       console.log("jwt is empty");
       return;
@@ -31,10 +32,12 @@ export class MyOrdersComponent implements OnInit
       return;
     }
 
-    this.orderService.getAllOrders(jwt).subscribe((orders:Order[]) =>{
+    this.orderService.getAllOrders(jwt)
+    .subscribe((orders: Order[]) =>
+    {
       console.log(orders);
       this.orderList = orders;
     });
-  }
 
+  }
 }

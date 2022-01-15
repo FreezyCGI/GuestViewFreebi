@@ -66,4 +66,9 @@ export class ShoppingCartService
     this._bottomSheet.open(ShoppingCartComponent);
   }
 
+  closeShoppingCart():void
+  {
+    this._bottomSheet.dismiss();
+  }
+
 }

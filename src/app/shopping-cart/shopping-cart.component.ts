@@ -44,8 +44,13 @@ export class ShoppingCartComponent implements OnInit
       {
         this.shoppingCartService.clearShoppingCart();
         this.updateShoppingCart();
-        this.cookieService.set("tableIdJWT", jwt.token, new Date().getDate() + 1);
-        this.router.navigateByUrl("/myOrders");
+        this.cookieService.set("orderJWT", jwt.token, new Date().getDate() + 1);
+               
+        this.shoppingCartService.closeShoppingCart();
+        setTimeout(() =>
+        {
+          this.router.navigateByUrl("/myOrders");
+        }, 500);
       });
   }
 }

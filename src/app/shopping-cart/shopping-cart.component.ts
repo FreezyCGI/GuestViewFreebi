@@ -43,7 +43,7 @@ export class ShoppingCartComponent implements OnInit
 
   submitOrder(): void
   {
-    this.submitOrderService.submitOrder().subscribe((jwt) =>{
+    this.submitOrderService.submitOrder(this.shoppingCartItemList).subscribe((jwt) =>{
       this.cookieService.set("tableIdJWT", jwt.token, new Date().getDate() + 1);
       alert(jwt.token);
     });

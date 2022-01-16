@@ -18,4 +18,8 @@ export class MainComponent implements OnInit
   {
     this.shoppingCartService.openShoppingCart();
   }
+
+  onBtnCallWaiterClicked(event:MouseEvent){
+    //ToDo: implement methode for the button - should porbably change color of nav and button should say waiter is called
+  }
 }

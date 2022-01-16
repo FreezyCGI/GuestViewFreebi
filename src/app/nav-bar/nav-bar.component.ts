@@ -30,9 +30,4 @@ export class NavBarComponent implements OnInit {
     });
   }
 
-
-  onBtnCallWaiterClicked(event:MouseEvent){
-    //ToDo: implement methode for the button - should porbably change color of nav and button should say waiter is called
-  }
-
 }

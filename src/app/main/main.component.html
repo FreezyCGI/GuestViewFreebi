@@ -11,6 +11,13 @@
         <router-outlet></router-outlet>
     </div>
 
+    <div class="callWaiterButton">
+        <button type="button" value="Call Waiter" (click)="onBtnCallWaiterClicked($event)">
+            <i class="material-icons"> notification_important </i><br>
+            Call Waiter
+        </button>
+    </div>
+
     <div class="shoppingCartButton">
         <button type="button" value="ShoppingCart" (click)="openShoppingCart()">
             <i class="material-icons"> shopping_cart </i><br>

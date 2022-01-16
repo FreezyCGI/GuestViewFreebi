@@ -33,3 +33,16 @@
     border-style: solid;
     z-index:2;
 }
+
+.shoppingCartButton{
+    position: absolute;
+    bottom: 1%;
+    left: 0%;
+    right: 0%;
+    text-align: center;
+}
+
+.callWaiterButton{
+    position: absolute;
+    bottom: 1%;
+}

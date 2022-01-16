@@ -1,14 +1,10 @@
-.mainContainer {
-    display: grid ;
-    grid-template-rows: 1fr;
-    grid-template-columns: 5fr 1fr 1fr;
-    height: 50px;
-    align-items: center;
-  }
+nav{
+  background-color: white;
 
-
+}
 /* ToDo @Chibi formatting the matTab */
 .matTab{       
     color: #1976D2ff;   
+    
 }
 

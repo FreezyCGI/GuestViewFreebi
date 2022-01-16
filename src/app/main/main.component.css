@@ -2,26 +2,22 @@
 
 .mainContainer {
     display: grid ;
-    grid-template-columns: 3fr 1fr;
-    /* grid-template-rows: min-content 1fr; */
-    background-color: white;
-    align-content: center;
-    margin:  0px 100px 0px 100px;
+    background: linear-gradient(293deg, rgba(25,118,210,1) 0%, rgba(255,255,255,1) 50%, rgba(25,118,210,1) 100%);
+    background-attachment: fixed;
   }
 
 
 .content{
-    grid-column-start: 1;
-    grid-row: 2;
-    min-height: 80vh;
-    margin: 1px;
+    min-height: 95vh;
+    margin:  49px 100px 0px 100px;
+    background-color: white;
 }
 
 
 .navBarTop{
-    grid-column-start: 1;
-    grid-row: 1;
-    margin-bottom: 20px;
+    position: fixed;
+    left: 0%;
+    right: 0%;   
 }
 
 .shoppingCartButton{

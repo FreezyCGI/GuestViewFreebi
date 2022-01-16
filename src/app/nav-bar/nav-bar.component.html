@@ -1,18 +1,7 @@
-<div class="mainContainer">
-    <div class="firstColumn">
-        <!-- <i class="material-icons"> home </i><a routerLink="">Home</a>
-        <i class="material-icons"> menu_book </i><a routerLink="/all">Menu</a>
-        <i class="material-icons"> shopping_bag </i><a routerLink="/myOrders">My Order</a>
-        <i class="material-icons"> mode_edit </i><a routerLink="/reviews">reviews</a> -->
-        <nav mat-tab-nav-bar>
-            <a class="matTab" mat-tab-link *ngFor="let link of links" 
-            (click)="activeLink = link" 
-            [active]="activeLink == link"
-            [routerLink]="link.link">
-                <i class="material-icons"> {{ link.iconName }} </i>
-                {{link.name}}
-            </a>
-        </nav>
-    </div>
-
-</div>
+<nav mat-tab-nav-bar mat-align-tabs="center">
+    <a class="matTab" mat-tab-link *ngFor="let link of links" (click)="activeLink = link" [active]="activeLink == link"
+        [routerLink]="link.link">
+        <i class="material-icons"> {{ link.iconName }} </i>
+        {{link.name}}
+    </a>
+</nav>

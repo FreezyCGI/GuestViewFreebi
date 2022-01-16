@@ -7,7 +7,7 @@ import { MenuItemCategory } from 'src/app/models/menu-item-category.model';
 @Component({
   selector: 'app-pizza',
   templateUrl: './pizza.component.html',
-  styleUrls: ['./pizza.component.css']
+  styleUrls: ['./pizza.component.css', '../menu-content.css']
 })
 export class PizzaComponent implements OnInit {
 

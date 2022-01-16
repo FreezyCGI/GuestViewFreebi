@@ -7,7 +7,7 @@ import { MenuItemCategory } from 'src/app/models/menu-item-category.model';
 @Component({
   selector: 'app-pasta',
   templateUrl: './pasta.component.html',
-  styleUrls: ['./pasta.component.css']
+  styleUrls: ['./pasta.component.css', '../menu-content.css']
 })
 export class PastaComponent implements OnInit {
 

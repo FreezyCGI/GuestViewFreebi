@@ -7,7 +7,7 @@ import { MenuItemCategory } from 'src/app/models/menu-item-category.model';
 @Component({
   selector: 'app-weekly-specials',
   templateUrl: './weekly-specials.component.html',
-  styleUrls: ['./weekly-specials.component.css']
+  styleUrls: ['./weekly-specials.component.css', '../menu-content.css']
 })
 export class WeeklySpecialsComponent implements OnInit {
 

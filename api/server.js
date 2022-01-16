@@ -103,12 +103,12 @@ app.get("/orders", (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');
 
-    let token = req.query.jwt;
+    let tableId = req.query.tableId;
 
     pool.query("select o.orderId, o.status, o.orderDate, o.paymentReference, mItem.itemId, mItem.title, mItem.description, mItem.price, mItem.allergens, mItem.status, oItem.count " +
         "from orders o, menu_items mItem, orderedItems oItem " +
-        "where paymentToken = $1 and o.orderId = oItem.orderId and mItem.itemId = oItem.itemId ",
-        [token])
+        "where o.tableId = $1 and o.orderId = oItem.orderId and mItem.itemId = oItem.itemId ",
+        [tableId])
         .then((data) =>
         {
             let orders = [];
@@ -117,8 +117,6 @@ app.get("/orders", (req, res) =>
             {
                 insertIntoOrders(row);
             });
-
-            console.log(orders);
 
             res.status(200).send(orders);
 

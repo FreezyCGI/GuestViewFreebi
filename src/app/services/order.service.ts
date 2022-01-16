@@ -12,9 +12,9 @@ export class OrderService {
 
   constructor(private http: HttpClient, private configService: ConfigService) { }
 
-  getAllOrders(jwt: string): Observable<Order[]>
+  getAllOrders(tableId: string): Observable<Order[]>
   {
-    let params = new HttpParams().set("jwt", jwt)
+    let params = new HttpParams().set("tableId", tableId)
 
     return this.http.get<Order[]>(this.configService.baseUrl + "/orders", {params: params});
   }

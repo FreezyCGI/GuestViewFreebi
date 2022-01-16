@@ -32,7 +32,7 @@ export class MyOrdersComponent implements OnInit
       return;
     }
 
-    this.orderService.getAllOrders(jwt)
+    this.orderService.getAllOrders(tableId)
     .subscribe((orders: Order[]) =>
     {
       console.log(orders);

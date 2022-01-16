@@ -9,9 +9,9 @@
     <div *ngFor="let menuItem of order.menuItems">
         <h3>Order Item:</h3>
         <div>Title: {{menuItem.title}}</div>
-        <div>item price: {{menuItem.price}}</div>
+        <div>item price: {{menuItem.price | number: '0.2-2'}}€</div>
         <div>count: {{menuItem.count}}</div>
-        <div>total price: {{menuItem.price * menuItem.count}}</div>
+        <div>total price: {{menuItem.price * menuItem.count | number: '0.2-2'}}€</div>
         <br>
     </div>
     <br>

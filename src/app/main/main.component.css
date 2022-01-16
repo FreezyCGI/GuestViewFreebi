@@ -24,25 +24,22 @@
     margin-bottom: 20px;
 }
 
-
-.shoppingCart
-{
-    grid-column: 2;
-    grid-row: 1;
-    grid-row-end: 3;
-    border-style: solid;
-    z-index:2;
-}
-
 .shoppingCartButton{
-    position: absolute;
+    position: fixed;
     bottom: 1%;
-    left: 0%;
-    right: 0%;
+    left: 1%;
+    right: 1%;
     text-align: center;
 }
 
 .callWaiterButton{
-    position: absolute;
+    position: fixed;
+    left: 1%;
     bottom: 1%;
+}
+
+.backToTopButton{
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
 }

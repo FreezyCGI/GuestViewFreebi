@@ -22,4 +22,8 @@ export class MainComponent implements OnInit
   onBtnCallWaiterClicked(event:MouseEvent){
     //ToDo: implement methode for the button - should porbably change color of nav and button should say waiter is called
   }
+
+  onBtnBackToTopClicked(event:MouseEvent){
+    //ToDo: implement methode for the button - should porbably change color of nav and button should say waiter is called
+  }
 }

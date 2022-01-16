@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+    --main-blue: #1976D2ff;
+}
+
 button{
     box-shadow: 2px 2px 4px 1px rgba(20,20,20,0.4);
-    color: #1976D2ff;
+    color: var(--main-blue);
     background-color: white;
     border: white;
     border-radius: 1px;
@@ -11,3 +15,4 @@ button{
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

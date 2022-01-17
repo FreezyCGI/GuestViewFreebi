@@ -1,12 +1,12 @@
 .menuItem{
     display: grid;
-    grid-template-columns: 2;
+    grid-template-columns: 1fr 1fr;
+    padding: 15px;
 
 }
 
 .menuItemInfo{
     grid-column: 1;
-    margin-right: 10px;
 }
 
 .menuItemImg{

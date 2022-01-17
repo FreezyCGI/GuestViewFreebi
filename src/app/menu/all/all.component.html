@@ -6,7 +6,7 @@
         <h1>Menu</h1>
     </div>
 
-    <mat-grid-list cols= "3" rowHeight= "7:3" gutterSize= "6px" class="menuItems">
+    <mat-grid-list cols= "3" rowHeight= "7:3" gutterSize="20px" class="menuItems">
         <mat-grid-tile *ngFor="let menuItem of menuItemList" class="menuItem">
             <app-menu-item [menuItem]="menuItem"></app-menu-item>
         </mat-grid-tile>

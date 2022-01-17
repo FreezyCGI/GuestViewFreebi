@@ -10,16 +10,19 @@ import { PizzaComponent } from './menu/pizza/pizza.component';
 import { PastaComponent } from './menu/pasta/pasta.component';
 import { LoginComponent } from './login/login.component';
 
+const baseUrl:string = 'guestView';
+
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component:HomeComponent },
   { path: 'myOrders', component:MyOrdersComponent },
   { path: 'reviews', component:ReviewsComponent },
-  { path: 'all', component:AllComponent },
-  { path: 'topSellers', component:TopSellersComponent },
-  { path: 'weeklySpecials', component:WeeklySpecialsComponent },
-  { path: 'pizza', component:PizzaComponent },
-  { path: 'pasta', component:PastaComponent },
+  { path: 'menu', redirectTo: 'menu/all', pathMatch: 'full' },
+  { path: 'menu/all', component:AllComponent },
+  { path: 'menu/topSellers', component:TopSellersComponent },
+  { path: 'menu/weeklySpecials', component:WeeklySpecialsComponent },
+  { path: 'menu/pizza', component:PizzaComponent },
+  { path: 'menu/pasta', component:PastaComponent },
   { path: 'login/:id', component:LoginComponent}
 ];
 

@@ -1,6 +1,8 @@
 <nav mat-tab-nav-bar mat-align-tabs="center">
-    <a class="matTab" mat-tab-link *ngFor="let link of links" (click)="activeLink = link" [active]="activeLink == link"
-        [routerLink]="link.link">
+    <a class="matTab" mat-tab-link *ngFor="let link of links" 
+    (click)="activeLink = link" 
+    [active]="activeLink == link"
+    [routerLink]="link.link">
         <i class="material-icons"> {{ link.iconName }} </i>
         {{link.name}}
     </a>

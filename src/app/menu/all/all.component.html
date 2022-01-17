@@ -1,17 +1,15 @@
 <app-nav-bar-menu></app-nav-bar-menu>
 
 <div class="menuContent">
+
     <div class="menuInformation">
         <h1>Menu</h1>
-        Description:
     </div>
 
-    <div class="menuItems">
-        <div *ngFor="let menuItem of menuItemList" class="menuItem">
+    <mat-grid-list cols= "3" rowHeight= "7:3" gutterSize= "6px" class="menuItems">
+        <mat-grid-tile *ngFor="let menuItem of menuItemList" class="menuItem">
             <app-menu-item [menuItem]="menuItem"></app-menu-item>
-        </div>
-    </div>
-
-
+        </mat-grid-tile>
+    </mat-grid-list>
 
 </div>

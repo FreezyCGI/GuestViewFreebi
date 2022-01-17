@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LoginComponent } from './login/login.component'; 
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTabsModule, 
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

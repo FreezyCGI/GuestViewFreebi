@@ -8,13 +8,8 @@
 }
 
 .menuItems{
-    display: grid;
+    height: 80vh;
 }
-
-.menuItem{
-    margin-bottom: 15px;
-}
-
 
 /* for Phone */
 @media screen and (max-width: 768px) {

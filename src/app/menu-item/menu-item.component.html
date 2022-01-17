@@ -1,21 +1,21 @@
 <div class="menuItem">
     <div class="menuItemInfo">
-        <div>Title: {{menuItem.title}}</div>
-        <div>Description: {{menuItem.description}}</div>
+        <h4>{{menuItem.title}}</h4>
+        <!-- <div>Description: {{menuItem.description}}</div> -->
         <div>Price: {{menuItem.price | number: '0.2-2'}}€</div>
-        <div>allergens: {{menuItem.allergens}}</div>
-        <div>status: {{menuItem.status}}</div>
+        <div>Allergens: {{menuItem.allergens}}</div>
+        <div>Status: {{menuItem.status}}</div>
+        
+        <button type="button" (click)="onAddToShoppingCartClicked()" value="Add to ShoppingCard">
+            <i class="material-icons">shopping_cart_checkout</i><br>
+            Add to ShoppingCard
+        </button>
     </div>
     
     <div class="menuItemImg">
-        <img [src]="imagePath" width="200px" *ngIf="imagePathName != ''">
+        <img [src]="imagePath" height="200px" *ngIf="imagePathName != ''">
     </div>
+
+    
 </div>
-
-
-
-<button type="button" (click)="onAddToShoppingCartClicked()" value="Add to ShoppingCard">
-    <i class="material-icons">shopping_cart_checkout</i><br>
-    Add to ShoppingCard
-</button>
 

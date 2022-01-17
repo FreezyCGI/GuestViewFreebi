@@ -10,7 +10,7 @@ export class NavBarComponent implements OnInit
 {
   links = [
     { link: '/home', iconName: 'home', name: 'Home' },
-    { link: '/all', iconName: 'menu_book', name: 'Menu' },
+    { link: '/menu/all', iconName: 'menu_book', name: 'Menu' },
     { link: '/myOrders', iconName: 'shopping_bag', name: 'My Orders' },
     { link: '/reviews', iconName: 'mode_edit', name: 'Reviews' }];
   activeLink = {};
@@ -30,12 +30,11 @@ export class NavBarComponent implements OnInit
   setLink(): void
   {
     this.links.forEach((link) =>
-    {
-      if (link.link == location.pathname)
-      {
+    { 
+      if ("/" + link.link.split("/")[1] == "/" + location.pathname.split("/")[1])
+      {     
         this.activeLink = link;
       }
     });
   }
-
 }

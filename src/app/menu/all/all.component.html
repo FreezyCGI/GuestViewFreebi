@@ -1,15 +1,17 @@
 <app-nav-bar-menu></app-nav-bar-menu>
 
 <div class="menuContent">
-
-    <h1>Menu</h1>
-    Description:
-    <br><br>
-
-    <div *ngFor="let menuItem of menuItemList">
-        <app-menu-item [menuItem]="menuItem"></app-menu-item>
-        <br>
-        <br>
+    <div class="menuInformation">
+        <h1>Menu</h1>
+        Description:
     </div>
+
+    <div class="menuItems">
+        <div *ngFor="let menuItem of menuItemList" class="menuItem">
+            <app-menu-item [menuItem]="menuItem"></app-menu-item>
+        </div>
+    </div>
+
+
 
 </div>

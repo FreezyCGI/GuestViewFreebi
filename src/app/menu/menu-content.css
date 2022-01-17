@@ -2,3 +2,21 @@
     margin-top: 50px;
 
 }
+
+.menuInformation{
+    margin-bottom: 15px;
+}
+
+.menuItems{
+    display: grid;
+}
+
+.menuItem{
+    margin-bottom: 15px;
+}
+
+
+/* for Phone */
+@media screen and (max-width: 768px) {
+
+}

@@ -1,3 +1,17 @@
+.menuItem{
+    display: grid;
+    grid-template-columns: 2;
+
+}
+
+.menuItemInfo{
+    grid-column: 1;
+}
+
+.menuItemImg{
+    grid-column: 2;
+}
+
 button{
     margin-left: 3px;
 }

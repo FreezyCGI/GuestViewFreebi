@@ -12,6 +12,10 @@
         <div>item price: {{menuItem.price | number: '0.2-2'}}€</div>
         <div>count: {{menuItem.count}}</div>
         <div>total price: {{menuItem.price * menuItem.count | number: '0.2-2'}}€</div>
+        <form #form>
+            <div>Stars: <input type="number" #stars max="5" min="1" value="5"></div>
+            <div><button type="button" (click)="submit(stars.value, menuItem.itemid)">Submit</button></div>
+        </form>
         <br>
     </div>
     <br>

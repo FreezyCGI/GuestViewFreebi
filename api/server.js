@@ -92,6 +92,18 @@ app.post("/review", (req, res) =>
         });
 });
 
+app.post("/reviewMenuItem", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    pool.query("insert into reviews_menu_items(itemId, stars, createdAt) " +
+        "values($1, $2, $3)",
+        [req.body.itemId, req.body.stars, req.body.createdAt]).
+        then((data) =>
+        {
+            res.status(200).send();
+        });
+});
+
 app.post("/order", checkAuth, (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');

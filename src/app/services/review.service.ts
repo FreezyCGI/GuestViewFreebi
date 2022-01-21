@@ -20,4 +20,8 @@ export class ReviewService
   {
     return this.http.post<Review>(this.configService.baseUrl + "/review", review, this.configService.httpOptionsForJson);
   }
+
+  postReviewMenuItem(review: Review){
+    return this.http.post(this.configService.baseUrl + "/reviewMenuItem", review, this.configService.httpOptionsForJson);
+  }
 }

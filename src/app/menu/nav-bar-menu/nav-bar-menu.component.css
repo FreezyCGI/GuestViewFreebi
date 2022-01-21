@@ -4,6 +4,7 @@
     right: 0%;
     text-align: center;
     background-color: white;
+    z-index: 1;
 }
 
 .matTab{       

@@ -1,10 +1,10 @@
 <h1>Reviews</h1>
 
 <div>
-    <h2>Write your review:</h2>
+    <h4>Write your review:</h4>
     <form #form>
         <div>Stars: <input type="number" #stars max="5" min="1" value="5"></div>
-        <div>Description:
+        <div>Enter your Description: <br>
             <textarea #desc></textarea>
         </div>
         <div><button type="button" (click)="submit(stars.value, desc.value)">Submit</button></div>
@@ -15,9 +15,9 @@
 
 <div>  
     <div *ngFor="let review of reviewList">
-        <div>Stars: <img *ngFor="let i of starsToArr(review.stars)" src="/assets/images/star.png"></div>
-        <div>Description: {{review.description}}</div>
-        <div>Created: {{review.createdAt}}</div>
+        <div><img *ngFor="let i of starsToArr(review.stars)" src="/assets/images/star.png"></div>
+        <!-- <div>Created: {{review.createdAt}}</div> -->
+        <div>{{review.description}}</div>
         <br>
     </div>
 </div>

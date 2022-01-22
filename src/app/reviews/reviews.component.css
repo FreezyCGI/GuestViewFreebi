@@ -1,3 +1,10 @@
 img{
     max-width: 20px;
 }
+h4{
+    margin-bottom: 6px;
+}
+
+form{
+    line-height: 1.6;
+}

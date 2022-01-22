@@ -34,6 +34,9 @@ export class MyOrdersComponent implements OnInit {
       .subscribe((orders: Order[]) => {
         console.log(orders);
         this.orderList = orders;
+        this.orderList.forEach((order) =>{
+          order.orderDate = new Date(order.orderDate);
+        });
       });
 
   }

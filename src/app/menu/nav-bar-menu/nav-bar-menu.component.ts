@@ -10,11 +10,11 @@ import { Link } from 'src/app/models/link.model';
 export class NavBarMenuComponent implements OnInit {
   
   links:Link[] = [
-    { link: '/menu/all', iconName: '', name: 'all' },
-    { link: '/menu/topSellers', iconName: '', name: 'top sellers' },
-    { link: '/menu/weeklySpecials', iconName: '', name: 'weekly specials' },
-    { link: '/menu/pizza', iconName: 'mode_edit', name: 'pizza' },
-    { link: '/menu/pasta', iconName: 'mode_edit', name: 'pasta' }];
+    { link: '/menu/all', iconName: '', name: 'All' },
+    { link: '/menu/topSellers', iconName: '', name: 'Top Sellers' },
+    { link: '/menu/weeklySpecials', iconName: '', name: 'Weekly Specials' },
+    { link: '/menu/pizza', iconName: 'mode_edit', name: 'Pizza' },
+    { link: '/menu/pasta', iconName: 'mode_edit', name: 'Pasta' }];
   activeLink:Link = new Link;
 
   constructor(private router: Router) { }

@@ -1,21 +1,24 @@
 <h1>My Orders:</h1>
 
 <div *ngFor="let order of orderList">
-    <h2>Order:</h2>
-    <div>id: {{order.orderId}}</div>
+    <h3>Order from: {{order.orderDate.getHours()}}:{{order.orderDate.getMinutes()}}</h3>
+    <!-- <div>id: {{order.orderId}}</div> -->
     <div>status: {{order.status}}</div>
-    <div>date: {{order.orderDate}}</div>
+
     <div>payment Reference: {{order.paymentReference}}</div>
     <div *ngFor="let menuItem of order.menuItems">
-        <h3>Order Item:</h3>
-        <div>Title: {{menuItem.title}}</div>
-        <div>item price: {{menuItem.price | number: '0.2-2'}}€</div>
-        <div>count: {{menuItem.count}}</div>
-        <div>total price: {{menuItem.price * menuItem.count | number: '0.2-2'}}€</div>
-        <form #form>
-            <div>Stars: <input type="number" #stars max="5" min="1" value="5"></div>
-            <div><button type="button" (click)="submit(stars.value, menuItem.itemid)">Submit</button></div>
-        </form>
+        <div class="orderItem">
+            <h4>Order Item:</h4>
+            <div>Title: {{menuItem.title}}</div>
+            <div>item price: {{menuItem.price | number: '0.2-2'}}€</div>
+            <div>count: {{menuItem.count}}</div>
+            <div>total price: {{menuItem.price * menuItem.count | number: '0.2-2'}}€</div>
+            <form #form>
+                <div>Stars: <input type="number" #stars max="5" min="1" value="5"></div>
+                <div><button type="button" (click)="submit(stars.value, menuItem.itemid)">Rate</button></div>
+            </form>
+        </div>
+
         <br>
     </div>
     <br>

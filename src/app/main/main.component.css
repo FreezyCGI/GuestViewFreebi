@@ -10,6 +10,7 @@
 .content{
     min-height: 95vh;
     margin:  49px 6% 0px 6%;
+    padding-left: 10px;
     background-color: white;
 }
 

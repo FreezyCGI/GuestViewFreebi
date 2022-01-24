@@ -1,4 +1,4 @@
-<h1>My Orders:</h1>
+<h1>My Orders</h1>
 
 <div *ngFor="let order of orderList">
     <mat-expansion-panel hideToggle>
@@ -6,29 +6,23 @@
             <mat-panel-title>
                 <h3>Order from: {{order.orderDate.getHours()}}:{{order.orderDate.getMinutes()}}</h3>
             </mat-panel-title>
-            <!-- <div>id: {{order.orderId}}</div> -->
             <mat-panel-description>
-               <div>status: {{order.status}}</div> 
+                <div>Status: {{order.status}}</div>
             </mat-panel-description>
         </mat-expansion-panel-header>
 
-        <div>payment Reference: {{order.paymentReference}}</div>
         <div *ngFor="let menuItem of order.menuItems">
             <div class="orderItem">
-                <h4>Order Item:</h4>
-                <div>Title: {{menuItem.title}}</div>
-                <div>item price: {{menuItem.price | number: '0.2-2'}}€</div>
-                <div>count: {{menuItem.count}}</div>
-                <div>total price: {{menuItem.price * menuItem.count | number: '0.2-2'}}€</div>
+                <h4>{{menuItem.count}}x {{menuItem.title}}</h4>
+                <div>Item Price: {{menuItem.price | number: '0.2-2'}}€</div>
+                <div>Total Price: {{menuItem.price * menuItem.count | number: '0.2-2'}}€</div>
                 <form #form>
                     <div>Stars: <input type="number" #stars max="5" min="1" value="5"></div>
                     <div><button type="button" (click)="submit(stars.value, menuItem.itemid)">Rate</button></div>
                 </form>
             </div>
-    
-            <br>
         </div>
         <br>
     </mat-expansion-panel>
-    
+
 </div>

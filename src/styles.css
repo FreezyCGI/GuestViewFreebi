@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC&display=swap');
+
 :root {
     --main-blue: #1976D2ff;
 }
@@ -15,4 +17,16 @@ button{
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1{
+    font-family: 'Encode Sans SC', sans-serif;
+}
+
+h3{
+    font-family: 'Encode Sans SC', sans-serif;
+}
+
+h4{
+    font-family: 'Encode Sans SC', sans-serif;
+}
 

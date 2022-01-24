@@ -1,3 +1,8 @@
+.reviews{
+    text-align: center;
+}
+
+
 img{
     max-width: 20px;
 }
@@ -5,4 +10,9 @@ img{
 
 form{
     line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.review{
+    margin: 20px;
 }

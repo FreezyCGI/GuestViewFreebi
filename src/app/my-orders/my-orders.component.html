@@ -11,6 +11,7 @@
             </mat-panel-description>
         </mat-expansion-panel-header>
 
+        Total: {{order.totalCost | number: '0.2-2'}}€
         <div *ngFor="let menuItem of order.menuItems">
             <div class="orderItem">
                 <h4>{{menuItem.count}}x {{menuItem.title}}</h4>

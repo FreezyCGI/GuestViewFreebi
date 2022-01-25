@@ -7,4 +7,5 @@ export class Order
     orderDate: Date = new Date();
     paymentReference: string = "";
     menuItems: MenuItemModel[] = [];
+    totalCost:number = 0;
 }

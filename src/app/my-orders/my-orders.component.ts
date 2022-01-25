@@ -36,6 +36,12 @@ export class MyOrdersComponent implements OnInit {
         this.orderList = orders;
         this.orderList.forEach((order) =>{
           order.orderDate = new Date(order.orderDate);
+
+          let totalCost = 0;
+          order.menuItems.forEach(menuItem => {
+            totalCost += menuItem.price * menuItem.count;
+          });
+          order.totalCost = totalCost;
         });
       });
 

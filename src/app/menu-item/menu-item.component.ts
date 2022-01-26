@@ -58,4 +58,21 @@ export class MenuItemComponent implements OnInit
     this.shoppingCartService.openShoppingCart();
   }
 
+  firstLetterToUpper(data:string):string
+  {
+    data = data.toLowerCase();
+    let words:string[] = data.split(' ');
+    let newWords = '';
+
+    words.forEach((word) => {
+      let firstLetter:string = word[0];
+      firstLetter = firstLetter.toUpperCase();
+      word = firstLetter + word.substring(1, word.length);
+      newWords += word + " ";
+    })
+
+
+    return newWords;
+  }
+
 }

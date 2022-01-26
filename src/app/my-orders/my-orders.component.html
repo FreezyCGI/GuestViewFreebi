@@ -15,7 +15,7 @@
             <div class="orderItem">
                 <h4>{{menuItem.count}}x {{menuItem.title}}</h4>
                 <div>Item Price: {{menuItem.price | number: '0.2-2'}}€</div>
-                <div>Total Price: {{menuItem.price * menuItem.count | number: '0.2-2'}}€</div>
+                <div>Total: {{menuItem.price * menuItem.count | number: '0.2-2'}}€</div>
                 <form #form>
                     <div>Stars: <input type="number" #stars max="5" min="1" value="5"></div>
                     <div><button type="button" (click)="submit(stars.value, menuItem.itemid)">Rate</button></div>

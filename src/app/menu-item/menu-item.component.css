@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant&family=Encode+Sans+SC:wght@400;700&family=Handlee&family=Montserrat&family=Quicksand&family=Zen+Kaku+Gothic+New&display=swap');
+
 .menuItem{
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
@@ -13,6 +15,11 @@
 .menuItemDesc{
     grid-column: 2;
     padding: 15px;
+    font-family: 'Handlee', cursive;
+    /* font-family: 'Assistant', sans-serif; */
+    /* font-family: 'Zen Kaku Gothic New', sans-serif; */
+    /* font-family: 'Quicksand', sans-serif; */
+    /* font-family: 'Montserrat', sans-serif; */
 }
 
 .menuItemImg{

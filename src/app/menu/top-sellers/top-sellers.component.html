@@ -3,9 +3,7 @@
 <div class="menuContent">
 
     <div class="menuInformation">
-        <h1>Top Sellers</h1>
-        Description: contains the 5 most frequently bought items of the last 30 days
-        
+        <h1>Top Sellers</h1>        
         <mat-grid-list cols="1" rowHeight="250px" class="menuItems" >
             <mat-grid-tile  *ngFor="let menuItem of menuItemList">
                 <app-menu-item [menuItem]="menuItem"></app-menu-item>

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { ReviewsComponent } from './reviews/reviews.component';
-import { HomeComponent } from './home/home.component';
 import { AllComponent } from './menu/all/all.component';
 import { TopSellersComponent } from './menu/top-sellers/top-sellers.component';
 import { WeeklySpecialsComponent } from './menu/weekly-specials/weekly-specials.component';
@@ -13,8 +12,7 @@ import { LoginComponent } from './login/login.component';
 const baseUrl:string = 'guestView';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component:HomeComponent },
+  { path: '', redirectTo: 'menu/all', pathMatch: 'full' },
   { path: 'myOrders', component:MyOrdersComponent },
   { path: 'reviews', component:ReviewsComponent },
   { path: 'menu', redirectTo: 'menu/all', pathMatch: 'full' },

@@ -20,13 +20,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 h1{
     font-family: 'Encode Sans SC', sans-serif;
+    color: var(--main-blue); 
 }
 
 h3{
     font-family: 'Encode Sans SC', sans-serif;
+    color: var(--main-blue); 
 }
 
 h4{
     font-family: 'Encode Sans SC', sans-serif;
+    color: var(--main-blue); 
 }
 

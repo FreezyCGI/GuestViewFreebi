@@ -2,10 +2,10 @@ drop view if exists select_top_sellers;
 
 drop table if exists orderedItems;
 drop table if exists menu_itemsXmenu_categories;
+drop table if exists reviews_menu_items;
 drop table if exists menu_items;
 drop table if exists menu_categories;
 drop table if exists reviews;
-drop table if exists reviews_menu_items;
 drop table if exists orders;
 
 create table menu_items
@@ -96,6 +96,3 @@ select * from menu_items items, menu_categories cat, menu_itemsXmenu_categories 
 where items.itemId = merger.itemId and cat.categoryId = merger.categoryId;
 select * from reviews;
 select * from orders;
-select * from orders, menu_items,orderedItems
-where orders.orderId = orderedItems.orderId and menu_items.itemId = orderedItems.itemId 
-group by orders.orderId;

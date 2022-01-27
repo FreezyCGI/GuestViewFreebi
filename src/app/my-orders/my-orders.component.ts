@@ -12,6 +12,7 @@ import { ReviewService } from '../services/review.service';
 })
 export class MyOrdersComponent implements OnInit {
   orderList: Order[] = [];
+  newRating:number = 1;
 
   constructor(private cookieService: CookieService,
     private orderService: OrderService, private reviewService: ReviewService) { }
@@ -20,10 +21,10 @@ export class MyOrdersComponent implements OnInit {
     let tableId = this.cookieService.get("tableId");
     let jwt: string = this.cookieService.get("orderJWT");
 
-    if (jwt == "") {
-      console.log("jwt is empty");
-      return;
-    }
+    // if (jwt == "") {
+    //   console.log("jwt is empty");
+    //   return;
+    // }
 
     if (tableId == "") {
       console.log("tableId is empty");
@@ -47,38 +48,26 @@ export class MyOrdersComponent implements OnInit {
 
   }
 
-  submit(starsString: string, menuItemId: number): void {
-    if (starsString.trim() == "") {
-      alert("stars must not be empty");
-      return;
-    }
+  submit( menuItemId: number): void {
     let review: Review = new Review();
 
     try {
-      let stars = parseInt(starsString);
-
-      if (stars > 5)
-      {
-        alert("max 5 stars");
-        return;
-      }
-      if (stars < 0)
-      {
-        alert("min 1 star");
-        return;
-      }
 
       review.itemId=menuItemId;
-      review.stars = stars;
+      review.stars = this.newRating;
       review.createdAt = new Date();
       
       
 
-      this.reviewService.postReviewMenuItem(review).subscribe(() => window.location.reload());
+     this.reviewService.postReviewMenuItem(review).subscribe(() => window.location.reload());
 
     } catch (error) {
       console.log(error);
     }
+  }
+
+  onRateReview(rating:number):void{
+    this.newRating = rating;
   }
 
 }

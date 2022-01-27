@@ -11,6 +11,7 @@ import { ReviewService } from '../services/review.service';
 export class ReviewsComponent implements OnInit
 {
   reviewList: Review[] = [];
+  newRating:number = 1;
 
   constructor(private reviewService: ReviewService)
   {
@@ -25,11 +26,11 @@ export class ReviewsComponent implements OnInit
     });
   }
 
-  submit(starsString: string, desc: string): void
+  submit(desc: string): void
   {
-    if (starsString.trim() == "" || desc.trim() == "")
+    if (desc.trim() == "")
       {
-        alert("stars and description must not be empty");
+        alert("Description must not be empty");
         return;   
       }
 
@@ -37,21 +38,8 @@ export class ReviewsComponent implements OnInit
 
     try
     {
-      let stars = parseInt(starsString);
-
-      if (stars > 5)
-      {
-        alert("max 5 stars");
-        return;
-      }
-      if (stars < 0)
-      {
-        alert("min 1 star");
-        return;
-      }
-
       review.description = desc;
-      review.stars = stars;
+      review.stars = this.newRating;
       review.createdAt = new Date();
 
       this.reviewService.postReview(review).subscribe(() => window.location.reload());  
@@ -60,6 +48,10 @@ export class ReviewsComponent implements OnInit
     {
       console.log(ex);
     }
+  }
+
+  onRateReview(rating:number):void{
+    this.newRating = rating;
   }
 
   //Pfusch 

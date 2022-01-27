@@ -1,0 +1,9 @@
+<div>
+    <img *ngFor="let active of activeStars; let i = index " 
+    src="/assets/images/star.png" (click)="onStarClicked(i)" 
+    [class.imgDeactivated]="active === false"
+    >
+
+
+
+</div>

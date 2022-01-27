@@ -33,6 +33,16 @@ app.get("/menuList", (req, res) =>
         });
 });
 
+app.get("/topSellers", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    pool.query("select * from select_top_sellers").
+        then((data) =>
+        {
+            res.status(200).send(data.rows);
+        });
+});
+
 app.get("/menuCategories", (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');
@@ -119,7 +129,8 @@ app.get("/orders", (req, res) =>
 
     pool.query("select o.orderId, o.status, o.orderDate, o.paymentReference, mItem.itemId, mItem.title, mItem.description, mItem.price, mItem.allergens, mItem.status, oItem.count " +
         "from orders o, menu_items mItem, orderedItems oItem " +
-        "where o.tableId = $1 and o.orderId = oItem.orderId and mItem.itemId = oItem.itemId ",
+        "where o.tableId = $1 and o.orderId = oItem.orderId and mItem.itemId = oItem.itemId " +
+        "order by o.orderdate desc",
         [tableId])
         .then((data) =>
         {

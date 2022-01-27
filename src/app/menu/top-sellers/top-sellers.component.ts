@@ -14,12 +14,12 @@ export class TopSellersComponent implements OnInit {
   constructor(private menuItemService: MenuItemServiceService) { }
 
   ngOnInit(): void {
-    this.getMenuItems();
+    this.getTopSellers();
   }
 
-  getMenuItems(): void
+  getTopSellers(): void
   {
-    this.menuItemService.getAllMenuItems()
+    this.menuItemService.getTopSellers()
       .subscribe(menuItems => { this.menuItemList = menuItems; });
   }
 

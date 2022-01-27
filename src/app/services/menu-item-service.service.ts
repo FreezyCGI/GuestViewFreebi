@@ -22,4 +22,9 @@ export class MenuItemServiceService
   {
     return this.http.get<MenuItemModel[]>(this.configService.baseUrl + "/menuList/" + title);
   }
+
+  getTopSellers(): Observable<MenuItemModel[]>
+  {
+    return this.http.get<MenuItemModel[]>(this.configService.baseUrl + "/topSellers");
+  }
 }

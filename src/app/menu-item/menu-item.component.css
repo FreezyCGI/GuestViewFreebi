@@ -9,7 +9,6 @@
 
 .menuItemInfo{
     grid-column: 1;
-
 }
 
 .menuItemDesc{
@@ -32,4 +31,15 @@ button{
 
 h4{
     margin-bottom: 6px;
+}
+
+@media screen and (max-width: 992px) {
+    .menuItemDesc{
+        display: none;
+    }
+
+    img{
+        height: 130px;
+    }
+    
 }

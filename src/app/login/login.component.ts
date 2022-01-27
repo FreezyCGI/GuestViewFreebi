@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       let id = params['id'];
       this.cookieService.set("tableId", id, new Date().getDate() + 1, '/');
-      this.router.navigateByUrl("/home");
+      this.router.navigateByUrl("/menu/all");
     });
   }
 

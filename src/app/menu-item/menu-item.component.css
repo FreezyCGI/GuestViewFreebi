@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant&family=Encode+Sans+SC:wght@400;700&family=Handlee&family=Montserrat&family=Quicksand&family=Zen+Kaku+Gothic+New&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Assistant&family=Encode+Sans+SC:wght@400;700&family=Handlee&family=Montserrat&family=Quicksand&family=Zen+Kaku+Gothic+New&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Assistant&family=Handlee');
 
 .menuItem{
     display: grid;

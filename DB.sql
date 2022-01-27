@@ -1,4 +1,4 @@
-
+drop view if exists select_top_sellers;
 
 drop table if exists orderedItems;
 drop table if exists menu_itemsXmenu_categories;
@@ -79,7 +79,17 @@ create table orderedItems
       FOREIGN KEY(orderId) 
 	  REFERENCES orders(orderId)
 );
-	  
+
+create view select_top_sellers as
+select mi.title, mi.itemid, oi.count
+from (select oi.itemid, count(oi.itemid) as count
+	from orderedItems oi
+	group by oi.itemid
+	order by sum(oi.count) desc
+	limit 5) as oi, menu_items mi
+where oi.itemid = mi.itemid
+order by oi.count desc;
+
 select * from menu_items;
 select * from menu_categories;
 select * from menu_items items, menu_categories cat, menu_itemsXmenu_categories merger

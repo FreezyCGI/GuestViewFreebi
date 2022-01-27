@@ -33,13 +33,18 @@ h4{
     margin-bottom: 6px;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 880px) {
+    .menuItemDesc{
+        display: none;
+    } 
+}
+
+@media screen and (max-width: 480px) {
     .menuItemDesc{
         display: none;
     }
 
     img{
         height: 130px;
-    }
-    
+    }   
 }

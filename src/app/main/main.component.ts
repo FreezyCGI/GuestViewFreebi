@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, HostListener } from '@angular/core';
+import { elementAt } from 'rxjs';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
@@ -21,14 +22,14 @@ export class MainComponent implements OnInit
     this.shoppingCartService.openShoppingCart();
   }
 
-  onBtnCallWaiterClicked(event: MouseEvent)
+  onBtnCallWaiterClicked():void
   {
+    alert("Waiter has been called");
     //ToDo: implement methode for the button - should porbably change color of nav and button should say waiter is called
   }
 
   onBtnBackToTopClicked(event: MouseEvent)
   {
-    //ToDo: implement methode for the button - should porbably change color of nav and button should say waiter is called
     this.scroll.scrollToPosition([0,0]);
   }
 }

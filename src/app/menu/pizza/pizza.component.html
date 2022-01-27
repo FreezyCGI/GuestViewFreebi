@@ -7,17 +7,10 @@
         {{categoryInfo.description}}
     </div>
     
-    <mat-grid-list cols= "2" rowHeight= "250px" gutterSize= "6px" class="menuItems">
+    <mat-grid-list cols="1" rowHeight="250px" class="menuItems" >
         <mat-grid-tile  *ngFor="let menuItem of menuItemList">
             <app-menu-item [menuItem]="menuItem"></app-menu-item>
         </mat-grid-tile>
     </mat-grid-list>
-
-    <div *ngFor="let menuItem of menuItemList">
-        
-        <br>
-        <br>
-    </div>
-
 
 </div>

@@ -4,11 +4,11 @@
     <div>
         <h4>Write your review:</h4>
         <form #form>
-            <div>Stars: <input type="number" #stars max="5" min="1" value="5"></div>
+            <div>Stars: <app-rate-review (ratingEvent)="onRateReview($event);"></app-rate-review></div>
             <div>Enter your Description: <br>
                 <textarea #desc></textarea>
             </div>
-            <div><button type="button" (click)="submit(stars.value, desc.value)">Submit</button></div>
+            <div><button type="button" (click)="submit(desc.value)">Submit</button></div>
         </form>
     </div>
         
@@ -21,4 +21,5 @@
     </div>
 
 </div>
+
 

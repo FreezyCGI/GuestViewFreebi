@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { RateReviewComponent } from './rate-review/rate-review.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     NavBarMenuComponent,
     MainComponent,
     ShoppingCartItemComponent,
-    LoginComponent
+    LoginComponent,
+    RateReviewComponent
   ],
   imports: [
     BrowserModule,

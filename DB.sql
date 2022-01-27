@@ -82,7 +82,7 @@ create table orderedItems
 
 create view select_top_sellers as
 select mi.title, mi.itemid, oi.count
-from (select oi.itemid, count(oi.itemid) as count
+from (select oi.itemid, sum(oi.count) as count
 	from orderedItems oi
 	group by oi.itemid
 	order by sum(oi.count) desc

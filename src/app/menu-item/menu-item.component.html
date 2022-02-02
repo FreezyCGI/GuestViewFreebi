@@ -6,7 +6,7 @@
         <div>Price: {{menuItem.price | number: '0.2-2'}}€</div>       
         <div>Status: {{menuItem.status}}</div>
 
-        <button type="button" (click)="onAddToShoppingCartClicked()" value="Add to ShoppingCard">
+        <button type="button" (click)="onAddToShoppingCartClicked()" value="Add to ShoppingCard" *ngIf="menuItem.status == 'available'">
             <i class="material-icons">shopping_cart_checkout</i><br>
             Add to ShoppingCard
         </button>

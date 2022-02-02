@@ -1,3 +1,5 @@
+## Link to Documentation: https://docs.google.com/document/d/1gAi1xOq9xxwx2iIfsovTfW6vbRMvY3mheEtD4IMyd_s/edit?usp=sharing
+
 # GuestViewFreebi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.

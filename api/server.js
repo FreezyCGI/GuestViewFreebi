@@ -90,6 +90,18 @@ app.get("/reviews", (req, res) =>
         });
 });
 
+app.post("/callWaiter", (req, res) =>{
+    res.setHeader('Content-Type', 'application/json');
+    pool.query(
+        "insert into consultation_request(tableid, status)" +
+        "values($1, $2)",
+        [req.body.tableid, true])
+        .then((data) =>{
+            res.status(200).send();
+        }
+    );
+});
+
 app.post("/review", (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');

@@ -1,9 +1,10 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, HostListener } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { elementAt } from 'rxjs';
+import { CallWaiterService } from '../services/call-waiter.service';
 import { ShoppingCartService } from '../services/shopping-cart.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +16,10 @@ export class MainComponent implements OnInit
   title = 'GuestViewFreebi';
 
   constructor(private shoppingCartService: ShoppingCartService,
-    private scroll: ViewportScroller, private _snackBar: MatSnackBar) { }
+    private scroll: ViewportScroller, 
+    private _snackBar: MatSnackBar,
+    private callWaiterService: CallWaiterService,
+    private cookieService: CookieService) { }
 
   ngOnInit(): void { }
 
@@ -26,9 +30,16 @@ export class MainComponent implements OnInit
 
   onBtnCallWaiterClicked():void
   {
-    this._snackBar.open('Waiter has been called', '', {duration: 2000});
+    let tableId = this.cookieService.get("tableId");
 
-    //ToDo: implement methode for the button - should porbably change color of nav and button should say waiter is called
+    if (tableId == "") {
+      console.log("tableId is empty");
+      return;
+    }
+
+    this.callWaiterService.postCallWaiter(tableId).subscribe();
+
+    this._snackBar.open('Waiter has been called', '', {duration: 2000});
   }
 
   onBtnBackToTopClicked(event: MouseEvent)

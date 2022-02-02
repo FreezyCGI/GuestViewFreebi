@@ -114,12 +114,6 @@ app.post("/reviewMenuItem", (req, res) =>
         });
 });
 
-app.post("/order", checkAuth, (req, res) =>
-{
-    res.setHeader('Content-Type', 'application/json');
-    let tableId = req.tableId;
-    console.log(tableId);
-});
 
 app.get("/orders", (req, res) =>
 {
@@ -127,7 +121,7 @@ app.get("/orders", (req, res) =>
 
     let tableId = req.query.tableId;
 
-    pool.query("select o.orderId, o.status, o.orderDate, o.paymentReference, mItem.itemId, mItem.title, mItem.description, mItem.price, mItem.allergens, mItem.status, oItem.count " +
+    pool.query("select o.orderId, o.status, o.orderDate, o.paymentReference, mItem.itemId, mItem.title, mItem.description, mItem.price, mItem.allergens, oItem.count " +
         "from orders o, menu_items mItem, orderedItems oItem " +
         "where o.tableId = $1 and o.orderId = oItem.orderId and mItem.itemId = oItem.itemId " +
         "order by o.orderdate desc",

@@ -22,6 +22,7 @@
                     <div >Stars: <app-rate-review (ratingEvent)="onRateReview($event);"></app-rate-review></div>
                     <div><button type="button" (click)="submit(menuItem.itemid, order.orderId)">Rate</button></div>
                 </form>
+                <div *ngIf="menuItem.hasBeenRated == true">Item has been rated</div>
             </div>
         </div>
         <br>

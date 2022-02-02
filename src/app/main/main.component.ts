@@ -5,6 +5,7 @@ import { elementAt } from 'rxjs';
 import { CallWaiterService } from '../services/call-waiter.service';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -14,14 +15,37 @@ import { CookieService } from 'ngx-cookie-service';
 export class MainComponent implements OnInit
 {
   title = 'GuestViewFreebi';
+  waiterCalled= false;
 
   constructor(private shoppingCartService: ShoppingCartService,
     private scroll: ViewportScroller, 
     private _snackBar: MatSnackBar,
     private callWaiterService: CallWaiterService,
-    private cookieService: CookieService) { }
+    private cookieService: CookieService,
+    private router: Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+    this.router.events.subscribe((val) => {
+      this.updateCallWaiterButton();
+    });
+
+    this.updateCallWaiterButton();
+   }
+   
+   updateCallWaiterButton():void
+   {
+    let tableId = this.cookieService.get("tableId");
+  
+    if (tableId == "" || tableId == null|| tableId == undefined ) {
+      console.log("tableId is empty");
+      return;
+    }
+
+     this.callWaiterService.getStatus(tableId).subscribe((status) =>{
+      this.waiterCalled = status;
+    });
+   }
 
   openShoppingCart(): void
   {
@@ -32,12 +56,14 @@ export class MainComponent implements OnInit
   {
     let tableId = this.cookieService.get("tableId");
 
-    if (tableId == "") {
+    if (tableId == ""|| tableId == null|| tableId == undefined ) {
       console.log("tableId is empty");
       return;
     }
 
-    this.callWaiterService.postCallWaiter(tableId).subscribe();
+    this.callWaiterService.postCallWaiter(tableId).subscribe(()=>{
+        this.waiterCalled=true;
+    });
 
     this._snackBar.open('Waiter has been called', '', {duration: 2000});
   }

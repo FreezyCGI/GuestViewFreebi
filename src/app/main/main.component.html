@@ -12,9 +12,10 @@
     </div>
 
     <div class="callWaiterButton">
-        <button mat-stroked-button type="button" value="Call Waiter" (click)="onBtnCallWaiterClicked()" aria-label="Show an example snack-bar">
+        <button mat-stroked-button type="button" value="Call Waiter"  [disabled]="waiterCalled" (click)="onBtnCallWaiterClicked()" aria-label="Show an example snack-bar">
             <i class="material-icons"> notification_important </i><br>
-            Call Waiter
+            <div *ngIf="waiterCalled != true">Call Waiter</div>
+            <div *ngIf="waiterCalled == true">Waiter Called</div>
         </button>
     </div>
 

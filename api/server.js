@@ -90,6 +90,17 @@ app.get("/reviews", (req, res) =>
         });
 });
 
+app.get("/callWaiterStatus", (req, res) =>{
+    res.setHeader('Content-Type', 'application/json');
+    pool.query(
+        "select status from consultation_request where tableid = $1 and status = true;",
+        [req.query.tableid])
+        .then((data) =>{
+            res.status(200).send(data.rows.length > 0);
+        }
+    );
+});
+
 app.post("/callWaiter", (req, res) =>{
     res.setHeader('Content-Type', 'application/json');
     pool.query(

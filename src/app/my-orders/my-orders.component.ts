@@ -4,6 +4,7 @@ import { Order } from '../models/order.model';
 import { OrderService } from '../services/order.service';
 import { Review } from '../models/review.model';
 import { ReviewService } from '../services/review.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-my-orders',
@@ -15,7 +16,7 @@ export class MyOrdersComponent implements OnInit {
   newRating:number = 1;
 
   constructor(private cookieService: CookieService,
-    private orderService: OrderService, private reviewService: ReviewService) { }
+    private orderService: OrderService, private reviewService: ReviewService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     let tableId = this.cookieService.get("tableId");
@@ -59,7 +60,9 @@ export class MyOrdersComponent implements OnInit {
       
       
 
-     this.reviewService.postReviewMenuItem(review).subscribe(() => window.location.reload());
+     this.reviewService.postReviewMenuItem(review).subscribe();
+
+     this._snackBar.open('Item has been rated', 'Okay', {duration: 7000});
 
     } catch (error) {
       console.log(error);

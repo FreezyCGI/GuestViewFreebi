@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { RateReviewComponent } from './rate-review/rate-review.component';
 
 @NgModule({
@@ -53,7 +54,8 @@ import { RateReviewComponent } from './rate-review/rate-review.component';
     MatTabsModule, 
     MatBottomSheetModule,
     MatGridListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

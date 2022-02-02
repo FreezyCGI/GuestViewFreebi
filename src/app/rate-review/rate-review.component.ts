@@ -32,6 +32,8 @@ export class RateReviewComponent implements OnInit {
       this.activeStars[i] = false;
     }
     this.activeStars[0] = true;
+    this.activeStars[1] = true;
+    this.activeStars[2] = true;
   }
 
 }

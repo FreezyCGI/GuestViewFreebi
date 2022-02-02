@@ -31,8 +31,8 @@ router.post('/', async(req, res) =>
                 let itemId = menuItemsList[key].itemId;
                 let count = menuItemsList[key].count;
                 
-                let promise = pool.query("insert into orderedItems(itemId, orderId, count) "+
-                "values($1, $2, $3)",
+                let promise = pool.query("insert into orderedItems(itemId, orderId, count, status) "+
+                "values($1, $2, $3, 'ordered')",
                 [itemId, orderId, count]);
                 promises.push(promise);
             }

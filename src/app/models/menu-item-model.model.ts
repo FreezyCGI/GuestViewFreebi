@@ -8,4 +8,5 @@ export class MenuItemModel
     status: string = "";
     categories: number[] = [];
     count:number = 0;
+    hasBeenRated?:boolean = false;
 }

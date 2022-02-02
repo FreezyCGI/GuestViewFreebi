@@ -105,12 +105,25 @@ app.post("/review", (req, res) =>
 app.post("/reviewMenuItem", (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');
-    pool.query("insert into reviews_menu_items(itemId, stars, createdAt) " +
-        "values($1, $2, $3)",
-        [req.body.itemId, req.body.stars, req.body.createdAt]).
+    pool.query("insert into reviews_menu_items(itemId, stars, createdAt, orderId) " +
+        "values($1, $2, $3, $4)",
+        [req.body.itemId, req.body.stars, req.body.createdAt, req.body.orderId]).
         then((data) =>
         {
             res.status(200).send();
+        });
+});
+
+app.get("/reviewMenuItem", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    pool.query("select rev.* " +
+        "from reviews_menu_items rev, orders o, menu_items i " +
+        "where rev.itemId = i.itemId and rev.orderId = o.orderId and rev.itemid = $1 and rev.orderid = $2;",
+        [req.query.itemid, req.query.orderid]).
+        then((data) =>
+        {
+            res.status(200).send(data.rows[0]);
         });
 });
 
@@ -121,7 +134,7 @@ app.get("/orders", (req, res) =>
 
     let tableId = req.query.tableId;
 
-    pool.query("select o.orderId, o.status, o.orderDate, o.paymentReference, mItem.itemId, mItem.title, mItem.description, mItem.price, mItem.allergens, oItem.count " +
+    pool.query("select o.orderId, o.status as status, o.orderDate, o.paymentReference, mItem.itemId, mItem.title, mItem.description, mItem.price, mItem.allergens, oItem.count, oitem.status as itemstatus " +
         "from orders o, menu_items mItem, orderedItems oItem " +
         "where o.tableId = $1 and o.orderId = oItem.orderId and mItem.itemId = oItem.itemId " +
         "order by o.orderdate desc",
@@ -157,7 +170,8 @@ app.get("/orders", (req, res) =>
                     description: row.description,
                     price: row.price,
                     allergens: row.allergens,
-                    count: row.count
+                    count: row.count,
+                    status: row.itemstatus
                 };
 
                 if (orderIndex == -1)

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Review } from '../models/review.model';
@@ -23,5 +23,12 @@ export class ReviewService
 
   postReviewMenuItem(review: Review){
     return this.http.post(this.configService.baseUrl + "/reviewMenuItem", review, this.configService.httpOptionsForJson);
+  }
+
+  getReviewMenuItem(itemId:number, orderId:string):Observable<{orderid:string, itemid:string}>
+  {
+    let params = new HttpParams().set("itemid", itemId).set("orderid", orderId);
+
+    return this.http.get<{orderid:string, itemid:string}>(this.configService.baseUrl + "/reviewMenuItem", {params: params})
   }
 }

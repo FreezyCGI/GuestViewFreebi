@@ -42,6 +42,11 @@ export class MyOrdersComponent implements OnInit {
           let totalCost = 0;
           order.menuItems.forEach(menuItem => {
             totalCost += menuItem.price * menuItem.count;
+            this.reviewService.getReviewMenuItem(menuItem.itemid, order.orderId)
+            .subscribe((reviewItem:{orderid:string, itemid:string}) => {
+              if(reviewItem != null)
+                menuItem.hasBeenRated = true;
+            });
           });
           order.totalCost = totalCost;
         });
@@ -49,7 +54,7 @@ export class MyOrdersComponent implements OnInit {
 
   }
 
-  submit( menuItemId: number): void {
+  submit( menuItemId: number, orderId: string): void {
     let review: Review = new Review();
 
     try {
@@ -57,6 +62,7 @@ export class MyOrdersComponent implements OnInit {
       review.itemId=menuItemId;
       review.stars = this.newRating;
       review.createdAt = new Date();
+      review.orderId = orderId
       
       
 
